@@ -1,0 +1,86 @@
+command: E:\software\miniforge3\python.exe "E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\src\robot_agent\task_subprocess_runner.py" --task "For this task, you need to transport a blue, hollow plastic box. Please move it from the starting point \"Pick Station 2\" to the destination \"Place Station 3\". Please follow the Standard Operating Procedure (SOP)." --task-index 0 --timestamp 20260629_164216 --result-json "E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\recordings\FactorySorting1_3FO3ERFHISEM\result_20260629_164216.json" --app-dir "E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026" --knowledge-enabled true
+
+===== OUTPUT =====
+E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\__init__.py:49: SyntaxWarning: invalid escape sequence '\ '
+  /[_]\  [~]\/    |//  |
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly (e.g. pip install mink==0.0.5), otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:41)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_right_gripper_qpos', 'robot0_left_eef_pos', 'robot0_right_eef_quat', 'robot0_right_eef_pos', 'robot0_left_eef_quat', 'robot0_left_gripper_qpos']
+using obs modality: rgb with keys: ['robot0_robotview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+Created GPT_Backbone model with number of parameters: 396032
+Loaded robomimic checkpoint: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\model_epoch_150.pth
+Evaluation device: cpu
+[BACKEND v4] grasp_object_physics called
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+Evaluation factory scene: FactorySorting1_3FO3ERFHISEM
+[BC_INPUT] robot_base_pos=(8.000005,4.599997,0.000000)
+[BC_INPUT] robot_base_ori=[0.000000,0.000000,-3.139453] (yaw=-0.9993*pi)
+[BC_INPUT] actual_base_pose=(8.000005,4.599997) yaw=-3.139453
+[BC_INPUT] object_name=line_5_container_h01_near
+[BC_INPUT] torso_lift=0.3500
+[BC_INPUT] arm_right_1=0.7426
+[BC_INPUT] arm_right_3=2.1378
+[BC_INPUT] arm_right_4=2.1057
+[BC_INPUT] gripper_r=0.0120
+[BC_INPUT] scene=FactorySorting1_3FO3ERFHISEM
+[BC_INPUT] object input_1_conveyor_plastic_crate: pos=(-2.0000,-3.8000,0.5048)
+[BC_INPUT] object input_2_shelf_container_h10: pos=(0.0000,-3.8000,0.4850)
+[BC_INPUT] object input_3_table_container_h01: pos=(-2.0000,3.8000,0.5250)
+[BC_INPUT] object input_4_bin_tote_b01: pos=(0.0000,3.8000,0.6000)
+[BC_INPUT] object line_5_container_h01_far: pos=(7.0590,3.2560,1.1255)
+[BC_INPUT] object line_5_container_h01_near: pos=(7.0590,4.6190,1.1255)
+Target object: line_5_container_h01_near
+Robot base xy at reset: (8.000006, 4.599997)
+Tracking sites: {'right': 'line_5_container_h01_near_right_grasp_site', 'left': 'line_5_container_h01_near_left_grasp_site'}
+Below-site grasp targets: {'right': array([7.349     , 4.739     , 1.21548332]), 'left': array([7.349     , 4.499     , 1.21548332])}
+wrapped_env_grasp_start_pose: x=8.000006, y=4.599997, yaw=-3.139453
+Executing grasp policy on the current robomimic-wrapped environment without reset_to
+ObservationKeyToModalityDict: object not found, adding object to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos not found, adding robot0_joint_pos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos_cos not found, adding robot0_joint_pos_cos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_pos_sin not found, adding robot0_joint_pos_sin to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_vel not found, adding robot0_joint_vel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_joint_acc not found, adding robot0_joint_acc to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_right_eef_quat_site not found, adding robot0_right_eef_quat_site to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_right_gripper_qvel not found, adding robot0_right_gripper_qvel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_left_eef_quat_site not found, adding robot0_left_eef_quat_site to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_left_gripper_qvel not found, adding robot0_left_gripper_qvel to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_pos not found, adding robot0_base_pos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_quat not found, adding robot0_base_quat to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_to_right_eef_pos not found, adding robot0_base_to_right_eef_pos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_to_right_eef_quat not found, adding robot0_base_to_right_eef_quat to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_to_right_eef_quat_site not found, adding robot0_base_to_right_eef_quat_site to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_to_left_eef_pos not found, adding robot0_base_to_left_eef_pos to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_to_left_eef_quat not found, adding robot0_base_to_left_eef_quat to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: robot0_base_to_left_eef_quat_site not found, adding robot0_base_to_left_eef_quat_site to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: timesteps not found, adding timesteps to mapping with assumed low_dim modality!
+ObservationKeyToModalityDict: actions not found, adding actions to mapping with assumed low_dim modality!
+Holding final grasp action for 5 steps
+After same-env wrapped policy execution object collision geoms: ['line_5_container_h01_near_container_h01_col_bottom', 'line_5_container_h01_near_container_h01_col_front', 'line_5_container_h01_near_container_h01_col_back', 'line_5_container_h01_near_container_h01_col_left', 'line_5_container_h01_near_container_h01_col_right']
+After same-env wrapped policy execution gripper end targets: {'right': [7.349, 4.739, 1.2155], 'left': [7.349, 4.499, 1.2155]}
+After same-env wrapped policy execution gripper end positions: {'right': [7.3613, 4.753, 1.2462], 'left': [7.3631, 4.512, 1.2471]}
+After same-env wrapped policy execution gripper end deltas current-minus-target: {'right': [0.0123, 0.014, 0.0307], 'left': [0.0141, 0.013, 0.0317]}
+After same-env wrapped policy execution gripper end distances: {'right': 0.03590556601880624, 'left': 0.03701328975186652}
+After same-env wrapped policy execution fingerpad contact status: {'right': {'left_fingerpad': True, 'right_fingerpad': True}, 'left': {'left_fingerpad': True, 'right_fingerpad': True}}
+After same-env wrapped policy execution fingerpad contact pairs: {'right': {'left_fingerpad': [('gripper0_right_left_fingerpad_collision', 'line_5_container_h01_near_container_h01_col_right')], 'right_fingerpad': [('gripper0_right_right_fingerpad_collision', 'line_5_container_h01_near_container_h01_col_right')]}, 'left': {'left_fingerpad': [('gripper0_left_left_fingerpad_collision', 'line_5_container_h01_near_container_h01_col_right')], 'right_fingerpad': [('gripper0_left_right_fingerpad_collision', 'line_5_container_h01_near_container_h01_col_right')]}}
+After same-env wrapped policy execution grasp status: {'right': True, 'left': True}
+Same-env wrapped grasp return: 0.000000
+Same-env wrapped grasp success: True
+lift_initial_grasp_status: {'right': True, 'left': True}
+lift_start: object=line_5_container_h01_near, start_object_z=1.250452, target_object_z=1.400452, lift_height=0.150000
+lift_result: success=True, final_object_z=1.374778, lifted=0.124326, target_lift=0.150000, final_grasp_status={'right': True, 'left': True}
+[BACKEND] grasp and lift succeeded, proceeding with transport
+transport_attachment_enabled: object=line_5_container_h01_near, joint=line_5_container_h01_near_joint0, relative_xy=[0.9417, -0.0257], world_z=1.274511
+turn_to_output_result: success=True, turn_steps=40, target_yaw=0.011998, final_yaw=0.012024, final_error=-0.000026, xy_drift=0.000000
+libpng warning: iCCP: cHRM chunk does not match sRGB
+
+===== PROCESS EXIT =====
+returncode: 0

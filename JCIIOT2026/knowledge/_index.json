@@ -1,0 +1,98 @@
+{
+  "updated_at": "2026-06-29T16:48:29",
+  "document_count": 10,
+  "documents": {
+    "command_examples.md": {
+      "title": "<!-- COMPETITION LOCKED — DO NOT MODIFY -->",
+      "category": "general",
+      "tags": [],
+      "added_at": "2026-06-24T16:32:05"
+    },
+    "constraints.md": {
+      "title": "Constraints & Safety Rules",
+      "category": "rule",
+      "tags": [
+        "Pick Operation",
+        "Constraint Rules",
+        "Safety Rules",
+        "Prohibited",
+        "Constraints",
+        "Rules",
+        "Safety",
+        "Collision Detection"
+      ],
+      "added_at": "2026-06-07T10:03:21"
+    },
+    "pick_operation.md": {
+      "title": "<!-- COMPETITION LOCKED — DO NOT MODIFY -->",
+      "category": "general",
+      "tags": [],
+      "added_at": "2026-06-24T16:32:05"
+    },
+    "place_operation.md": {
+      "title": "<!-- COMPETITION LOCKED — DO NOT MODIFY -->",
+      "category": "general",
+      "tags": [],
+      "added_at": "2026-06-24T16:32:05"
+    },
+    "sop1.md": {
+      "title": "L1 Single-line Straight Transport",
+      "category": "sop",
+      "tags": [
+        "L1",
+        "input_5",
+        "output_4"
+      ],
+      "added_at": "2026-06-24T13:00:00"
+    },
+    "sop2.md": {
+      "title": "L2 Cross-line Transport + Obstacle Avoidance",
+      "category": "sop",
+      "tags": [
+        "L2",
+        "input_6",
+        "output_4"
+      ],
+      "added_at": "2026-06-24T13:00:00"
+    },
+    "sop3.md": {
+      "title": "L3 Cross-line Transport + Obstacle Avoidance + Anti-interference",
+      "category": "sop",
+      "tags": [
+        "L3",
+        "input_6",
+        "output_5"
+      ],
+      "added_at": "2026-06-24T13:00:00"
+    },
+    "sop4.md": {
+      "title": "L4 Large Item Cross-line Transport",
+      "category": "sop",
+      "tags": [
+        "L4",
+        "input_2",
+        "output_5"
+      ],
+      "added_at": "2026-06-24T13:00:00"
+    },
+    "sop5.md": {
+      "title": "L5 Extreme Transport",
+      "category": "sop",
+      "tags": [
+        "L5",
+        "input_1",
+        "output_6"
+      ],
+      "added_at": "2026-06-24T13:00:00"
+    },
+    "sop_main.md": {
+      "title": "<!-- COMPETITION LOCKED — DO NOT MODIFY -->",
+      "category": "sop",
+      "tags": [
+        "SOP",
+        "reference"
+      ],
+      "added_at": "2026-06-24T16:32:05"
+    }
+  }
+}

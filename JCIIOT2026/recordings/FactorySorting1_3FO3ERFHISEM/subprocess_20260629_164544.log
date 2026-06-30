@@ -1,0 +1,24 @@
+command: E:\software\miniforge3\python.exe "E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\src\robot_agent\task_subprocess_runner.py" --task "For this task, you need to transport a blue, hollow plastic box. Please move it from the starting point \"Pick Station 2\" to the destination \"Place Station 3\". Please follow the Standard Operating Procedure (SOP)." --task-index 0 --timestamp 20260629_164544 --result-json "E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\recordings\FactorySorting1_3FO3ERFHISEM\result_20260629_164544.json" --app-dir "E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026" --knowledge-enabled true
+
+===== OUTPUT =====
+E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\__init__.py:49: SyntaxWarning: invalid escape sequence '\ '
+  /[_]\  [~]\/    |//  |
+[robosuite WARNING] Could not load the mink-based whole-body IK. Make sure you install related import properly (e.g. pip install mink==0.0.5), otherwise you will not be able to use the default IK controller setting for GR1 robot. (__init__.py:41)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+[robosuite INFO] Loading controller configuration from: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\controllers\config\robots\default_tiago.json (composite_controller_factory.py:121)
+
+============= Initialized Observation Utils with Obs Spec =============
+
+using obs modality: low_dim with keys: ['robot0_right_gripper_qpos', 'robot0_right_eef_quat', 'robot0_right_eef_pos', 'robot0_left_eef_pos', 'robot0_left_eef_quat', 'robot0_left_gripper_qpos']
+using obs modality: rgb with keys: ['robot0_robotview_image']
+using obs modality: depth with keys: []
+using obs modality: scan with keys: []
+Created GPT_Backbone model with number of parameters: 396032
+Loaded robomimic checkpoint: E:\BaiduNetdiskDownload\JCIIOT 2026\Final\JCIIOT2026\robosuite\robosuite\model_epoch_150.pth
+Evaluation device: cpu
+libpng warning: iCCP: cHRM chunk does not match sRGB
+
+===== PROCESS EXIT =====
+returncode: 0

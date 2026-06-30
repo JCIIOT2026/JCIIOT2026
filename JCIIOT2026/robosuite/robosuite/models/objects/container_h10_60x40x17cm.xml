@@ -1,0 +1,57 @@
+<mujoco model="container_h10_60x40x17cm">
+  <asset>
+    <mesh name="container_h10_mesh" file="meshes/Container_H10_60x40x17cm_PR_V_NVD_01.usd" scale="1 1 1"/>
+    <material name="container_h10_visual_mat" rgba="0.90 0.96 0.90 1" specular="0.25" shininess="0.18"/>
+    <material name="container_h10_collision_mat" rgba="0.90 0.96 0.90 0.30" specular="0.05" shininess="0.05"/>
+  </asset>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <inertial pos="0 0 0" mass="0.40" diaginertia="0.0050 0.0090 0.0100"/>
+
+        <geom name="visual"
+              type="mesh"
+              mesh="container_h10_mesh"
+              material="container_h10_visual_mat"
+              contype="0"
+              conaffinity="0"
+              group="1"/>
+
+        <geom name="container_h10_col_bottom" type="box"
+              pos="0 0 -0.076"
+              size="0.30 0.20 0.009"
+              material="container_h10_collision_mat"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="container_h10_col_front" type="box"
+              pos="0 -0.193 0"
+              size="0.30 0.007 0.085"
+              material="container_h10_collision_mat"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="container_h10_col_back" type="box"
+              pos="0 0.193 0"
+              size="0.30 0.007 0.085"
+              material="container_h10_collision_mat"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="container_h10_col_left" type="box"
+              pos="-0.293 0 0"
+              size="0.007 0.20 0.085"
+              material="container_h10_collision_mat"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="container_h10_col_right" type="box"
+              pos="0.293 0 0"
+              size="0.007 0.20 0.085"
+              material="container_h10_collision_mat"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+      </body>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.085" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.085" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.30 0.20 0" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

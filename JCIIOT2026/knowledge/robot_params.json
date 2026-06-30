@@ -1,0 +1,57 @@
+{
+  "_comment": "=== Robot Execution Parameters === 选手可调整此文件来优化机器人性能，重启 app.py 后生效。碰撞检测参数不在此文件中，不可调整。",
+  "llm": {
+    "_comment": "LLM 大模型配置 —— 控制任务规划和视觉理解的模型接入",
+    "ollama_base_url": "http://localhost:11434",
+    "ollama_model": "qwen3.6:27b-mtp-q4_K_M",
+    "vision_model": "qwen3-vl:8b"
+  },
+  "navigation": {
+    "_comment": "导航参数 —— 控制底盘移动的速度、精度和模式",
+    "max_steps": 3000,
+    "waypoint_tolerance": 0.01,
+    "settle_steps": 5,
+    "max_linear": 0.70,
+    "max_angular": 1.20,
+    "k_linear": 1.2,
+    "k_angular": 1.8,
+    "holonomic_base": true,
+    "yaw_control": false,
+    "turn_in_place_angle": 0.65,
+    "drive_mode": "direct",
+    "control_freq": 20
+  },
+  "grasp_policy": {
+    "_comment": "BC 抓取策略参数 —— 控制基于行为克隆的抓取执行",
+    "checkpoint_path": "robosuite/robosuite/model_epoch_500.pth",
+    "checkpoint_fallback_path": "robosuite/robosuite/model_epoch_150.pth",
+    "eval_steps": 360,
+    "post_hold_steps": 5,
+    "initial_view_steps": 5,
+    "debug_policy": false,
+    "debug_every": 25,
+    "record_frame_interval": 5
+  },
+  "lift": {
+    "_comment": "抬升参数 —— 抓取后验证物体是否牢固的抬升阶段",
+    "lift_height": 0.15,
+    "max_steps": 300,
+    "hold_steps": 20,
+    "tolerance": 0.02,
+    "max_action": 0.80
+  },
+  "turn": {
+    "_comment": "转向参数 —— 放置前机器人面向目标站的转向控制",
+    "tolerance": 0.02,
+    "max_iters": 8,
+    "turn_steps": 40,
+    "settle_steps": 10
+  },
+  "place": {
+    "_comment": "放置参数 —— 控制物体下放和释放的精细操作",
+    "lower_delta": 0.18,
+    "lower_steps": 25,
+    "release_steps": 60,
+    "release_clearance": 0.04
+  }
+}

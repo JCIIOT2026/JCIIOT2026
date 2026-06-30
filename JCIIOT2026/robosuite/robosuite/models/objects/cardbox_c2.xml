@@ -1,0 +1,60 @@
+<mujoco model="cardbox_c2">
+
+  <asset>
+    <!-- USD 不是 mesh asset，而是 model asset -->
+    <model name="cardbox_c2_usd"
+           file="meshes/Cardbox_C2.usd"
+           content_type="text/usd"/>
+
+    <!-- 这个 material 主要给简化碰撞体用 -->
+    <material name="cardbox_c2_collision_mat"
+              rgba="0.76 0.62 0.42 0.30"
+              specular="0.05"
+              shininess="0.05"/>
+  </asset>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <inertial pos="0 0 0"
+                  mass="0.20"
+                  diaginertia="0.0020 0.0030 0.0035"/>
+
+        <!-- 
+          USD 视觉模型：
+          这里不再使用 <geom type="mesh">，
+          而是把 USD 作为一个子模型 attach 到当前 body 下。
+        -->
+        <attach model="cardbox_c2_usd"
+                prefix="cardbox_c2_visual_"/>
+
+        <!-- 
+          简化碰撞体：
+          保留 MuJoCo 原生 box 碰撞，避免复杂 USD mesh 碰撞不稳定。
+        -->
+        <geom name="cardbox_c2_collision"
+              type="box"
+              pos="0 0 0"
+              size="0.15 0.10 0.10"
+              material="cardbox_c2_collision_mat"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+      </body>
+
+      <site rgba="0 0 0 0"
+            size="0.005"
+            pos="0 0 -0.10"
+            name="bottom_site"/>
+
+      <site rgba="0 0 0 0"
+            size="0.005"
+            pos="0 0 0.10"
+            name="top_site"/>
+
+      <site rgba="0 0 0 0"
+            size="0.005"
+            pos="0.15 0.10 0"
+            name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,2040 @@
+{
+  "scene_name": "factory_sorting_six_lines",
+  "map_name": "factory_sorting_scene_regenerated",
+  "coordinate_frame": "mujoco_world_xy",
+  "description": "FactorySorting Siemens scene map regenerated from scene mesh coordinates. There are six production lines; the table on the positive-world-y side of each line is an input station, and the table on the negative-world-y side is an output station. Station numbering follows the FactorySorting line object names: line_1 is input_1/output_1 and line_6 is input_6/output_6. Production lines and scattered floor objects are marked as obstacles.",
+  "source_files": [
+    "robosuite/environments/factory_sorting/load_factory_sorting_scene.py",
+    "robosuite/models/arenas/siemens_arena.py",
+    "robosuite/models/assets/objects/siemens/mujoco_original/scene_robosuite.xml",
+    "robosuite/models/assets/objects/siemens/mujoco_original/summary.json",
+    "robosuite/models/assets/objects/siemens/mujoco_original/meshes/parts/*.obj"
+  ],
+  "coordinate_notes": {
+    "input_side": "positive world_y",
+    "output_side": "negative world_y",
+    "production_line_sources": "wardrobe Actor_0000, Actor_0002, Actor_0003, Actor_0004, Actor_0005, Actor_0006 static long meshes",
+    "station_centers": "estimated from table/equipment mesh bounding boxes at both ends of each production line",
+    "obstacles": "isolated low-floor mesh actor bounding boxes"
+  },
+  "bounds": {
+    "x_min": -18.8,
+    "x_max": 13.8,
+    "y_min": -10.8,
+    "y_max": 8.8
+  },
+  "image_view": {
+    "image_horizontal_axis": "world_y",
+    "image_vertical_axis": "-world_x"
+  },
+  "robot": {
+    "name": "tiago",
+    "start": [
+      1.35,
+      0.0
+    ],
+    "radius": 0.35,
+    "safety_margin": 0.15
+  },
+  "objects": [
+    {
+      "name": "input_6",
+      "display_name": "No.6 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.836,
+        5.624
+      ],
+      "size": [
+        1.1,
+        1.6
+      ],
+      "approach": [
+        12.136,
+        5.624
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.55,
+        0.8
+      ]
+    },
+    {
+      "name": "output_6",
+      "display_name": "No.6 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.032,
+        -7.267
+      ],
+      "size": [
+        0.9,
+        1.1
+      ],
+      "approach": [
+        9.032,
+        -7.267
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.45,
+        0.55
+      ]
+    },
+    {
+      "name": "input_5",
+      "display_name": "No.5 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        6.098,
+        3.934
+      ],
+      "size": [
+        2.2,
+        2.1
+      ],
+      "approach": [
+        7.948,
+        3.934
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        1.1,
+        1.05
+      ]
+    },
+    {
+      "name": "output_5",
+      "display_name": "No.5 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        4.872,
+        -7.261
+      ],
+      "size": [
+        0.9,
+        1.1
+      ],
+      "approach": [
+        3.872,
+        -7.261
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.45,
+        0.55
+      ]
+    },
+    {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        0.305,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        2.28,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        0.706,
+        -7.351
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -0.594,
+        -7.351
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.498,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -3.52,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.097,
+        -7.098
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -6.397,
+        -7.098
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.044,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -9.01,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.398,
+        -7.135
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -12.698,
+        -7.135
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -15.828,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -13.75,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -16.182,
+        -7.29
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -17.482,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "production_line_6",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        10.911,
+        -1.048
+      ],
+      "size": [
+        0.7,
+        13.872
+      ],
+      "mesh_source": "wardrobe/Actor_0002/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.936
+      ]
+    },
+    {
+      "name": "production_line_5",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        6.152,
+        -0.946
+      ],
+      "size": [
+        0.7,
+        13.603
+      ],
+      "mesh_source": "wardrobe/Actor_0003/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.8015
+      ]
+    },
+    {
+      "name": "production_line_5_lower_machine_body",
+      "display_name": "Line 5 lower machine body",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "production_line": "production_line_5",
+      "center": [
+        6.153,
+        -4.18
+      ],
+      "size": [
+        2.0,
+        6.35
+      ],
+      "mesh_source": "Other/Actor_0003/Geom/body meshes 0034-0036",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        1.0,
+        3.175
+      ]
+    },
+    {
+      "name": "production_line_5_mid_machine_module",
+      "display_name": "Line 5 middle machine module",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "production_line": "production_line_5",
+      "center": [
+        6.071,
+        0.955
+      ],
+      "size": [
+        1.55,
+        0.75
+      ],
+      "mesh_source": "Other/Actor_0003/Geom/body meshes 0043-0045",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.775,
+        0.375
+      ]
+    },
+    {
+      "name": "production_line_4",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        0.605,
+        -1.291
+      ],
+      "size": [
+        0.7,
+        12.493
+      ],
+      "mesh_source": "wardrobe/Actor_0006/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.2465
+      ]
+    },
+    {
+      "name": "production_line_3",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        -5.148,
+        -1.165
+      ],
+      "size": [
+        0.7,
+        12.24
+      ],
+      "mesh_source": "wardrobe/Actor_0004/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.12
+      ]
+    },
+    {
+      "name": "production_line_2",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        -10.643,
+        -1.093
+      ],
+      "size": [
+        0.7,
+        13.095
+      ],
+      "mesh_source": "wardrobe/Actor_0005/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.5475
+      ]
+    },
+    {
+      "name": "production_line_1",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        -15.427,
+        -1.17
+      ],
+      "size": [
+        0.7,
+        13.25
+      ],
+      "mesh_source": "wardrobe/Actor_0000/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.625
+      ]
+    },
+    {
+      "name": "line_1_container_h01_support",
+      "display_name": "Line 1 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        -14.694,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 1,
+      "nearest_station": "input_1",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_2_container_h10_support",
+      "display_name": "Line 2 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        -9.911,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 2,
+      "nearest_station": "input_2",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_3_tote_b01_support",
+      "display_name": "Line 3 tote support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        -4.466,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 3,
+      "nearest_station": "input_3",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_4_container_h01_support",
+      "display_name": "Line 4 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        1.337,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 4,
+      "nearest_station": "input_4",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_5_container_h10_support",
+      "display_name": "Line 5 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        7.036,
+        3.938
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "factory_line_index": 5,
+      "nearest_station": "input_5",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "line_6_tote_b01_support",
+      "display_name": "Line 6 tote support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        11.787,
+        3.932
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "factory_line_index": 6,
+      "nearest_station": "input_6",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "floor_obstacle_1",
+      "display_name": "Scattered floor obstacle 1",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        9.317,
+        -0.745
+      ],
+      "size": [
+        1.437,
+        1.372
+      ],
+      "mesh_source": "Other/Actor_0002",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.7185,
+        0.686
+      ]
+    },
+    {
+      "name": "floor_obstacle_2",
+      "display_name": "Scattered floor obstacle 2",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        3.096,
+        -0.228
+      ],
+      "size": [
+        0.614,
+        0.419
+      ],
+      "mesh_source": "Other/Actor_0005",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.307,
+        0.2095
+      ]
+    },
+    {
+      "name": "floor_obstacle_3",
+      "display_name": "Scattered floor obstacle 3",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        -2.732,
+        -2.402
+      ],
+      "size": [
+        1.419,
+        1.408
+      ],
+      "mesh_source": "Other/Actor_0014",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.7095,
+        0.704
+      ]
+    },
+    {
+      "name": "floor_obstacle_4",
+      "display_name": "Scattered floor obstacle 4",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        -12.048,
+        -1.799
+      ],
+      "size": [
+        0.405,
+        0.605
+      ],
+      "mesh_source": "Other/Actor_0011",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.2025,
+        0.3025
+      ]
+    },
+    {
+      "name": "floor_obstacle_5",
+      "display_name": "Scattered floor obstacle 5",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        -13.917,
+        1.536
+      ],
+      "size": [
+        1.37,
+        1.438
+      ],
+      "mesh_source": "Other/Actor_0006",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.685,
+        0.719
+      ]
+    },
+    {
+      "name": "yellow_scene_boundary_x_min",
+      "type": "floor_marker",
+      "kind": "visual_scene_boundary",
+      "center": [
+        -18.312,
+        -0.928
+      ],
+      "size": [
+        0.1,
+        14.367
+      ],
+      "is_obstacle": false,
+      "visual_value": "free",
+      "yaw": 0.0,
+      "half_size": [
+        0.05,
+        7.1835
+      ]
+    },
+    {
+      "name": "yellow_scene_boundary_x_max",
+      "type": "floor_marker",
+      "kind": "visual_scene_boundary",
+      "center": [
+        13.327,
+        -0.928
+      ],
+      "size": [
+        0.1,
+        14.367
+      ],
+      "is_obstacle": false,
+      "visual_value": "free",
+      "yaw": 0.0,
+      "half_size": [
+        0.05,
+        7.1835
+      ]
+    },
+    {
+      "name": "yellow_scene_boundary_y_min",
+      "type": "floor_marker",
+      "kind": "visual_scene_boundary",
+      "center": [
+        -2.492,
+        -8.062
+      ],
+      "size": [
+        31.539,
+        0.1
+      ],
+      "is_obstacle": false,
+      "visual_value": "free",
+      "yaw": 0.0,
+      "half_size": [
+        15.7695,
+        0.05
+      ]
+    },
+    {
+      "name": "yellow_scene_boundary_y_max",
+      "type": "floor_marker",
+      "kind": "visual_scene_boundary",
+      "center": [
+        -2.492,
+        6.205
+      ],
+      "size": [
+        31.539,
+        0.1
+      ],
+      "is_obstacle": false,
+      "visual_value": "free",
+      "yaw": 0.0,
+      "half_size": [
+        15.7695,
+        0.05
+      ]
+    }
+  ],
+  "cell_values": {
+    "free": 0,
+    "obstacle": 1,
+    "station": 2,
+    "approach": 3,
+    "robot": 4
+  },
+  "input_ports": {
+    "input_6": {
+      "name": "input_6",
+      "display_name": "No.6 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.836,
+        5.624
+      ],
+      "size": [
+        1.1,
+        1.6
+      ],
+      "approach": [
+        12.136,
+        5.624
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.55,
+        0.8
+      ]
+    },
+    "input_5": {
+      "name": "input_5",
+      "display_name": "No.5 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        6.098,
+        3.934
+      ],
+      "size": [
+        2.2,
+        2.1
+      ],
+      "approach": [
+        7.948,
+        3.934
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        1.1,
+        1.05
+      ]
+    },
+    "input_4": {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        0.305,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        2.28,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    "input_3": {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.498,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -3.52,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    "input_2": {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.044,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -9.01,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    "input_1": {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -15.828,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -13.75,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    }
+  },
+  "output_ports": {
+    "output_6": {
+      "name": "output_6",
+      "display_name": "No.6 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.032,
+        -7.267
+      ],
+      "size": [
+        0.9,
+        1.1
+      ],
+      "approach": [
+        9.032,
+        -7.267
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.45,
+        0.55
+      ]
+    },
+    "output_5": {
+      "name": "output_5",
+      "display_name": "No.5 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        4.872,
+        -7.261
+      ],
+      "size": [
+        0.9,
+        1.1
+      ],
+      "approach": [
+        3.872,
+        -7.261
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.45,
+        0.55
+      ]
+    },
+    "output_4": {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        0.706,
+        -7.351
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -0.594,
+        -7.351
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    "output_3": {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.097,
+        -7.098
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -6.397,
+        -7.098
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    "output_2": {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.398,
+        -7.135
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -12.698,
+        -7.135
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    "output_1": {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -16.182,
+        -7.29
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -17.482,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    }
+  },
+  "obstacles": [
+    {
+      "name": "input_6",
+      "display_name": "No.6 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.836,
+        5.624
+      ],
+      "size": [
+        1.1,
+        1.6
+      ],
+      "approach": [
+        12.136,
+        5.624
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.55,
+        0.8
+      ]
+    },
+    {
+      "name": "output_6",
+      "display_name": "No.6 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.032,
+        -7.267
+      ],
+      "size": [
+        0.9,
+        1.1
+      ],
+      "approach": [
+        9.032,
+        -7.267
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.45,
+        0.55
+      ]
+    },
+    {
+      "name": "input_5",
+      "display_name": "No.5 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        6.098,
+        3.934
+      ],
+      "size": [
+        2.2,
+        2.1
+      ],
+      "approach": [
+        7.948,
+        3.934
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        1.1,
+        1.05
+      ]
+    },
+    {
+      "name": "output_5",
+      "display_name": "No.5 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        4.872,
+        -7.261
+      ],
+      "size": [
+        0.9,
+        1.1
+      ],
+      "approach": [
+        3.872,
+        -7.261
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.45,
+        0.55
+      ]
+    },
+    {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        0.305,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        2.28,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        0.706,
+        -7.351
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -0.594,
+        -7.351
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.498,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -3.52,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.097,
+        -7.098
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -6.397,
+        -7.098
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.044,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -9.01,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.398,
+        -7.135
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -12.698,
+        -7.135
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -15.828,
+        5.469
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -13.75,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -16.182,
+        -7.29
+      ],
+      "size": [
+        1.5,
+        1.0
+      ],
+      "approach": [
+        -17.482,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.75,
+        0.5
+      ]
+    },
+    {
+      "name": "production_line_6",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        10.911,
+        -1.048
+      ],
+      "size": [
+        0.7,
+        13.872
+      ],
+      "mesh_source": "wardrobe/Actor_0002/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.936
+      ]
+    },
+    {
+      "name": "production_line_5",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        6.152,
+        -0.946
+      ],
+      "size": [
+        0.7,
+        13.603
+      ],
+      "mesh_source": "wardrobe/Actor_0003/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.8015
+      ]
+    },
+    {
+      "name": "production_line_5_lower_machine_body",
+      "display_name": "Line 5 lower machine body",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "production_line": "production_line_5",
+      "center": [
+        6.153,
+        -4.18
+      ],
+      "size": [
+        2.0,
+        6.35
+      ],
+      "mesh_source": "Other/Actor_0003/Geom/body meshes 0034-0036",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        1.0,
+        3.175
+      ]
+    },
+    {
+      "name": "production_line_5_mid_machine_module",
+      "display_name": "Line 5 middle machine module",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "production_line": "production_line_5",
+      "center": [
+        6.071,
+        0.955
+      ],
+      "size": [
+        1.55,
+        0.75
+      ],
+      "mesh_source": "Other/Actor_0003/Geom/body meshes 0043-0045",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.775,
+        0.375
+      ]
+    },
+    {
+      "name": "production_line_4",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        0.605,
+        -1.291
+      ],
+      "size": [
+        0.7,
+        12.493
+      ],
+      "mesh_source": "wardrobe/Actor_0006/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.2465
+      ]
+    },
+    {
+      "name": "production_line_3",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        -5.148,
+        -1.165
+      ],
+      "size": [
+        0.7,
+        12.24
+      ],
+      "mesh_source": "wardrobe/Actor_0004/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.12
+      ]
+    },
+    {
+      "name": "production_line_2",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        -10.643,
+        -1.093
+      ],
+      "size": [
+        0.7,
+        13.095
+      ],
+      "mesh_source": "wardrobe/Actor_0005/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.5475
+      ]
+    },
+    {
+      "name": "production_line_1",
+      "type": "obstacle",
+      "kind": "production_line",
+      "center": [
+        -15.427,
+        -1.17
+      ],
+      "size": [
+        0.7,
+        13.25
+      ],
+      "mesh_source": "wardrobe/Actor_0000/Geom/Static",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.35,
+        6.625
+      ]
+    },
+    {
+      "name": "line_1_container_h01_support",
+      "display_name": "Line 1 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        -14.694,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 1,
+      "nearest_station": "input_1",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_2_container_h10_support",
+      "display_name": "Line 2 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        -9.911,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 2,
+      "nearest_station": "input_2",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_3_tote_b01_support",
+      "display_name": "Line 3 tote support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        -4.466,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 3,
+      "nearest_station": "input_3",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_4_container_h01_support",
+      "display_name": "Line 4 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        1.337,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "factory_line_index": 4,
+      "nearest_station": "input_4",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "line_5_container_h10_support",
+      "display_name": "Line 5 container support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        7.036,
+        3.938
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "factory_line_index": 5,
+      "nearest_station": "input_5",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "line_6_tote_b01_support",
+      "display_name": "Line 6 tote support",
+      "type": "obstacle",
+      "kind": "line_object_support",
+      "center": [
+        11.787,
+        3.932
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "factory_line_index": 6,
+      "nearest_station": "input_6",
+      "geom_source": "FactorySorting._construct_siemens_line_objects support_surfaces",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "floor_obstacle_1",
+      "display_name": "Scattered floor obstacle 1",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        9.317,
+        -0.745
+      ],
+      "size": [
+        1.437,
+        1.372
+      ],
+      "mesh_source": "Other/Actor_0002",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.7185,
+        0.686
+      ]
+    },
+    {
+      "name": "floor_obstacle_2",
+      "display_name": "Scattered floor obstacle 2",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        3.096,
+        -0.228
+      ],
+      "size": [
+        0.614,
+        0.419
+      ],
+      "mesh_source": "Other/Actor_0005",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.307,
+        0.2095
+      ]
+    },
+    {
+      "name": "floor_obstacle_3",
+      "display_name": "Scattered floor obstacle 3",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        -2.732,
+        -2.402
+      ],
+      "size": [
+        1.419,
+        1.408
+      ],
+      "mesh_source": "Other/Actor_0014",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.7095,
+        0.704
+      ]
+    },
+    {
+      "name": "floor_obstacle_4",
+      "display_name": "Scattered floor obstacle 4",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        -12.048,
+        -1.799
+      ],
+      "size": [
+        0.405,
+        0.605
+      ],
+      "mesh_source": "Other/Actor_0011",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.2025,
+        0.3025
+      ]
+    },
+    {
+      "name": "floor_obstacle_5",
+      "display_name": "Scattered floor obstacle 5",
+      "type": "obstacle",
+      "kind": "scattered_floor_obstacle",
+      "center": [
+        -13.917,
+        1.536
+      ],
+      "size": [
+        1.37,
+        1.438
+      ],
+      "mesh_source": "Other/Actor_0006",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.685,
+        0.719
+      ]
+    }
+  ],
+  "resolution": 0.05,
+  "grid_shape": [
+    653,
+    393
+  ],
+  "files": {
+    "semantic_map": "factory_sorting_scene_regenerated_semantic_map.json",
+    "occupancy_grid": "factory_sorting_scene_regenerated_occupancy_grid.npy",
+    "visualization": "factory_sorting_scene_regenerated_map.png"
+  }
+}

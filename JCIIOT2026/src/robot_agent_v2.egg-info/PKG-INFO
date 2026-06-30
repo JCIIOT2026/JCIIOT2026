@@ -1,0 +1,339 @@
+Metadata-Version: 2.4
+Name: robot-agent-v2
+Version: 0.1.0
+Summary: Basic robot skill agent framework
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.24
+Requires-Dist: streamlit>=1.36
+Requires-Dist: pillow>=10.0
+Requires-Dist: matplotlib>=3.7
+
+# 竞赛选手手册 — 可修改文件与参数指南
+
+## 竞赛介绍
+
+本竞赛基于 **MuJoCo + robosuite + robomimic** 构建的 VLA（Vision-Language-Action）具身智能平台。选手需要在工厂分拣（FactorySorting）仿真场景中，控制一台 Tiago 移动机械臂机器人，完成从指定输入站抓取物料并搬运到指定输出站的运输任务。
+
+### 竞赛任务
+
+竞赛包含 **L1 ~ L5 五个难度递增的关卡**，每个关卡对应不同的仿真场景和任务描述：
+
+| 关卡 | 场景 | 满分 |
+|------|------|------|
+| L1 | FactorySorting1 | 10 |
+| L2 | FactorySorting3 | 15 |
+| L3 | FactorySorting5 | 20 |
+| L4 | FactorySorting7 | 25 |
+| L5 | FactorySorting9 | 30 |
+
+### 评分机制
+
+评分由 `app.py` 内置的 `_score_steps()` 函数自动计算，核心逻辑为：
+
+- **离开源站**（物体从输入站被移走）— 占总分 30%
+- **到达目标站**（物体被放置在输出站桌面）— 占总分 30%
+- **放置精度**（物体稳定停留在目标桌面）— 占总分 40%
+- **碰撞惩罚**：导航过程中发生碰撞 **-5 分**
+
+选手点击 `app.py` 的"执行"按钮后，系统自动运行任务、记录轨迹并计算得分。
+
+### 选手要做的事
+
+1. **理解 SOP**：从 `sop+prompt/` 目录的 Word 文档中，用大模型自动提取标准操作流程，生成知识库 `.md` 文件
+2. **优化技能代码**：修改 `src/robot_agent/skills/` 下的机器人操作逻辑，提高导航、抓取、放置的成功率
+3. **调优执行参数**：通过 `knowledge/robot_params.json` 调整导航速度、抓取步数、放置精度等参数
+4. **（进阶）训练自己的 BC 模型**：采集示教轨迹，训练 robomimic 行为克隆策略，替换默认抓取模型
+
+### 整体流程
+
+```
+执行prompt指令 → LLM 拆成步骤 → Agent 逐个执行 → Skill 驱动仿真
+```
+
+---
+
+## 竞赛规则
+
+### 代码与配置修改权限
+
+- ✅ **可修改**：`src/robot_agent/skills/`、`src/robot_agent/workflows/`、`knowledge/robot_params.json`
+- ❌ **禁止修改**：`src/robot_agent/core/`、`src/robot_agent/environments/`、`app.py`、`knowledge/task_config.json`
+- 修改代码后运行 `app.py`，点击"执行"即可查看得分
+
+### SOP 知识库规则（重要）
+
+`knowledge/` 目录下的 `sop1.md` ~ `sop5.md`、`sop_main.md` 等文件，是由人工阅读 Word 文档后手动转写而成的**参考版本**。
+
+**竞赛要求：**
+
+1. 原始 SOP 文档是 `sop+prompt/` 目录下的 5 个 Word 文件：
+
+   | Word 文件 | 对应关卡 |
+   |-----------|---------|
+   | `sop+prompt/JCIIOT 2026 case 1 SOP.docx` | L1 |
+   | `sop+prompt/JCIIOT 2026 case 3 SOP.docx` | L2 |
+   | `sop+prompt/JCIIOT 2026 case 5 SOP.docx` | L3 |
+   | `sop+prompt/JCIIOT 2026 case 7 SOP.docx` | L4 |
+   | `sop+prompt/JCIIOT 2026 case 9 SOP.docx` | L5 |
+
+2. 选手**必须自行编写代码**（如利用 `skills/read_document.py` 中的 .docx 解析 + VLM 视觉分析能力），让大模型读取上述 Word 文件，自动生成与人工转写版**功能等价**的 `.md` 知识库文件。
+
+3. **直接复用 `knowledge/` 目录下现存的 `sop*.md` 文件将导致扣分**。裁判会对比选手生成的文件与人工转写版，判定是否为 AI 自动生成的原创产出。
+
+4. 选手可将生成的新 `.md` 文件放入 `knowledge/` 目录（覆盖旧文件或新建文件均可），但需保留生成过程的代码在 `skills/` 或 `workflows/` 中，供裁判审查。
+
+### 场景地图资源
+
+项目提供了 5 个场景的完整物体位置与尺寸信息，选手可利用这些数据进行建图和导航优化。
+
+**原始场景数据** — `robosuite/robosuite/environments/factory_sorting/maps/`
+
+| 文件 | 对应关卡 |
+|------|---------|
+| `factory_sorting_1_3fo3erfhisem_scene_regenerated.json` | L1 |
+| `factory_sorting_3_3fo3errph7x9_scene_regenerated.json` | L2 |
+| `factory_sorting_5_3fo3ertpxeut_scene_regenerated.json` | L3 |
+| `factory_sorting_7_3fo3erfky9rn_scene_regenerated.json` | L4 |
+| `factory_sorting_9_3fo3ert2c5fp_scene_regenerated.json` | L5 |
+
+每个 JSON 文件包含：
+
+| 字段 | 内容 |
+|------|------|
+| `bounds` | 地图边界（`x_min`, `x_max`, `y_min`, `y_max`） |
+| `objects[]` | 所有物体的 **名称、中心坐标、尺寸（长宽）、朝向、类型（station/obstacle）、角色（input/output）、所属产线** |
+| `robot` | 机器人起始位姿 |
+| `resolution` | 网格分辨率（米/格） |
+
+**预生成地图** — `robosuite/robosuite/environments/factory_sorting/generated_maps/`
+
+每个场景对应 3 个文件，由 `get_map.py` 工具自动生成：
+
+| 文件后缀 | 内容 |
+|----------|------|
+| `_semantic_map.json` | 语义地图：包含站点坐标、接近点、边界等结构化信息（`app.py` 运行时加载此文件） |
+| `_occupancy_grid.npy` | 占用网格：NumPy 数组，FREE=0 / OBSTACLE=1 / STATION=2 / APPROACH=3 / ROBOT=4，供 A* 路径规划使用 |
+| `_map.png` | 可视化地图图片 |
+
+**地图生成工具** — `robosuite/robosuite/environments/factory_sorting/get_map.py`
+
+选手可以：
+- 参考此脚本理解地图生成逻辑
+- 修改输入参数重新生成网格（调整分辨率、障碍物大小等）
+- 在自己的 skill 中读取 `maps/` 下的原始 JSON 自行构建自定义地图
+
+### 场景观察与轨迹采集
+
+**场景观察代码** — 可独立运行查看各场景的 MuJoCo 仿真画面：
+
+| 文件 | 对应关卡 |
+|------|---------|
+| `load_factory_sorting_1_3fo3erfhisem_scene.py` | L1 |
+| `load_factory_sorting_3_3fo3errph7x9_scene.py` | L2 |
+| `load_factory_sorting_5_3fo3ertpxeut_scene.py` | L3 |
+| `load_factory_sorting_7_3fo3erfky9rn_scene.py` | L4 |
+| `load_factory_sorting_9_3fo3ert2c5fp_scene.py` | L5 |
+
+> 路径：`robosuite/robosuite/environments/factory_sorting/`
+
+运行方式（以 L1 为例）：
+```bash
+python robosuite/robosuite/environments/factory_sorting/load_factory_sorting_1_3fo3erfhisem_scene.py
+```
+
+**轨迹采集代码** — `load_factory_sorting_1_3fo3erfhisem_collect.py`
+
+> 路径：`robosuite/robosuite/environments/factory_sorting/`
+
+该脚本实现了完整的**机器人示教轨迹采集流程**：
+1. 启动 MuJoCo 仿真场景
+2. 机器人从导航位姿出发，执行双臂侧抓取动作
+3. 成功抓取后，将轨迹数据转换为 robomimic 格式的 HDF5 文件
+4. 生成的 `.hdf5` 文件保存在 `robosuite/robosuite/models/assets/demonstrations_private/` 目录下
+
+采集到的轨迹数据包含：
+- 低维观测（Tiago 末端执行器位姿、夹爪状态）
+- 图像观测（`robot0_robotview` 相机画面）
+
+**选手可以：**
+- 参考 `load_factory_sorting_1_3fo3erfhisem_collect.py` 的示教采集逻辑
+- 仿写其他 4 个场景的采集脚本（当前仅提供了 L1 场景的采集代码）
+- 自行采集各场景的抓取/放置示教轨迹
+- 使用采集的 `.hdf5` 数据训练自己的 robomimic BC 策略模型
+- 将训练好的 `.pth` 模型路径写入 `knowledge/robot_params.json` 的 `grasp_policy.checkpoint_path` 即可替换默认策略
+
+---
+
+## 一、可修改的代码文件
+
+### 1. 核心操作技能（直接影响得分）
+
+| 文件 | 机器人功能 | 调用的 backend 方法 | 消耗的 robot_params.json 参数 |
+|------|-----------|-------------------|------------------------------|
+| [skills/move.py](src/robot_agent/skills/move.py) | **导航**：将机器人底盘从当前位置移动到目标站点（通过 A* 路径规划 + 物理执行） | `backend.get_base_pose()` → `backend.follow_path(path)` | `navigation.*`（全部 12 个） |
+| [skills/pick_up.py](src/robot_agent/skills/pick_up.py) | **抓取**：在指定站点抓取物体（BC 神经网络策略执行 + 抬升验证） | `backend.grasp_object_physics()` | `grasp_policy.*`（全部 8 个）+ `lift.*`（全部 5 个） |
+| [skills/place_down.py](src/robot_agent/skills/place_down.py) | **放置**：将抓持的物体放置到目标站点（转向对齐 + 下降释放） | `backend.place_object_physics()` | `turn.*`（全部 4 个）+ `place.*`（全部 4 个） |
+| [skills/analyze_supply.py](src/robot_agent/skills/analyze_supply.py) | **自动补给**：扫描可用料箱 → 智能选择最近源 → 自动执行 移动→抓取→移动→放置 完整流程 | 组合调用 `get_available_crates()` → `move` → `pick` → `move` → `place` | 间接消耗上述所有参数 |
+
+### 2. 辅助技能（不影响直接得分）
+
+| 文件 | 机器人功能 | 说明 |
+|------|-----------|------|
+| [skills/record_trajectory.py](src/robot_agent/skills/record_trajectory.py) | **轨迹录制**：将任务执行过程中的所有帧保存为 JSON 文件（评分依据） | 流水线最后一步，不可省略 |
+| [skills/read_document.py](src/robot_agent/skills/read_document.py) | **文档阅读**：解析 .docx 文件，提取文本 + 调用 VLM 视觉模型分析图片 | 用于理解 SOP 操作手册 |
+| [skills/knowledge_mgr.py](src/robot_agent/skills/knowledge_mgr.py) | **知识库管理**：搜索/列出/增删 `knowledge/` 目录下的文档 | LLM 规划器通过此技能获取 SOP 知识 |
+| [skills/memory_mgr.py](src/robot_agent/skills/memory_mgr.py) | **记忆管理**：搜索/回顾/总结机器人的执行历史记录 | 用于失败后自省和策略调整 |
+
+### 3. 技能基础设施
+
+| 文件 | 机器人功能 | 注意事项 |
+|------|-----------|---------|
+| [skills/base.py](src/robot_agent/skills/base.py) | **技能基类**：定义 `can_handle`（关键词匹配）和 `run`（执行）协议 | 所有技能的父类，修改会影响全部技能 |
+| [skills/library.py](src/robot_agent/skills/library.py) | **技能工厂**：`wired_skills()` 实例化所有技能并连接 backend | 决定哪些技能被注册、如何初始化 |
+
+### 4. 工作流编排
+
+| 文件 | 机器人功能 | 说明 |
+|------|-----------|------|
+| [workflows/task_flow.py](src/robot_agent/workflows/task_flow.py) | **任务工作流**：封装 RobotAgent 的构建和端到端任务执行 | 薄层封装，可重写任务编排逻辑 |
+
+---
+
+## 二、`knowledge/robot_params.json` 完整参数参考
+
+> 修改此文件后**重启 app.py** 即可生效，无需改动任何 .py 代码。
+> 所有数值参数均有安全范围校验，超出范围的值会被自动 clamp 并打印 warning。
+
+### `llm` — 大模型配置（3 个）
+
+控制任务规划和视觉理解所使用的大模型接入。参数通过 `config.py` → `AgentConfig` 和 `app.py` 生效。**环境变量优先级高于此文件**。
+
+| 参数 | 类型 | 默认值 | 含义 |
+|------|------|--------|------|
+| `ollama_base_url` | string | `"https://pa1l785z-a9z3rfcp-11434.zj02restapi.gpufree.cn:8443"` | Ollama 服务地址。可改为本地地址 `http://localhost:11434` 或其他远程服务器 |
+| `ollama_model` | string | `"qwen3.6:27b-mtp-q4_K_M"` | 文本推理模型名（用于任务规划和步骤决策） |
+| `vision_model` | string | `"qwen3-vl:8b"` | 视觉理解模型名（用于 SOP 文档图片分析和场景观察） |
+
+### `navigation` — 导航参数（12 个）
+
+控制底盘移动的速度、精度和驱动模式。所有参数通过 `skills/move.py` → `backend.follow_path()` 生效。
+
+| 参数 | 类型 | 默认值 | 范围 | 含义 |
+|------|------|--------|------|------|
+| `max_steps` | int | 3000 | 500~10000 | 导航最大步数。步数越大允许更远距离的移动，但超时风险增加 |
+| `waypoint_tolerance` | float | 0.01 | 0.001~0.10 | 路径点到达判定距离（米）。越小越精确但可能无法到达 |
+| `settle_steps` | int | 5 | 0~20 | 到达终点后的稳定步数。让机器人停下后消除惯性 |
+| `max_linear` | float | 0.70 | 0.1~2.0 | 最大线速度（m/s）。越快越容易碰撞 |
+| `max_angular` | float | 1.20 | 0.1~3.0 | 最大角速度（rad/s）。越快转向越猛 |
+| `k_linear` | float | 1.2 | 0.1~5.0 | 线速度比例增益。越大加速越激进 |
+| `k_angular` | float | 1.8 | 0.1~5.0 | 角速度比例增益。越大转向越激进 |
+| `holonomic_base` | bool | true | true/false | 是否启用全向移动（可横向平移） |
+| `yaw_control` | bool | false | true/false | 是否启用朝向控制（导航中主动调整朝向） |
+| `turn_in_place_angle` | float | 0.65 | 0.1~3.0 | 原地转弯阈值（rad）。朝向误差超过此值时先转再走 |
+| `drive_mode` | string | "direct" | "direct"/"action" | 驱动模式。"direct"=直接设置位置，"action"=速度控制 |
+| `control_freq` | int | 20 | 10~50 | 控制频率（Hz）。越高控制越精细但计算量越大 |
+
+### `grasp_policy` — BC 抓取策略参数（8 个）
+
+控制基于行为克隆（Behavior Cloning）的神经网络抓取执行。所有参数通过 `skills/pick_up.py` → `backend.grasp_object_physics()` 生效。
+
+| 参数 | 类型 | 默认值 | 范围 | 含义 |
+|------|------|--------|------|------|
+| `checkpoint_path` | string | `"robosuite/robosuite/model_epoch_500.pth"` | — | BC 策略模型文件路径（相对项目根目录）。选手可替换为自己训练的模型 |
+| `checkpoint_fallback_path` | string | `"robosuite/robosuite/model_epoch_150.pth"` | — | 回退模型路径。当 `checkpoint_path` 文件不存在时使用 |
+| `eval_steps` | int | 360 | 100~1000 | 策略执行步数。每步模型输出一个动作。步数太少抓不到，太多浪费时间 |
+| `post_hold_steps` | int | 5 | 0~30 | 抓取完成后的保持步数。让爪子稳定闭合 |
+| `initial_view_steps` | int | 5 | 0~30 | 策略执行前的观察步数。给模型提供初始视觉输入 |
+| `debug_policy` | bool | false | true/false | 是否打印策略调试信息（每 N 步输出诊断） |
+| `debug_every` | int | 25 | 1~100 | 调试信息打印间隔（步）。仅在 `debug_policy=true` 时有效 |
+| `record_frame_interval` | int | 5 | 1~50 | 轨迹帧录制间隔（步）。值越小轨迹越密集但文件越大 |
+
+### `lift` — 抬升验证参数（5 个）
+
+抓取后向上抬起物体，以验证抓取是否牢固。所有参数通过 `skills/pick_up.py` → `backend.grasp_object_physics()` 生效。
+
+| 参数 | 类型 | 默认值 | 范围 | 含义 |
+|------|------|--------|------|------|
+| `lift_height` | float | 0.15 | 0.05~0.50 | 抬升目标高度（米）。从当前位置向上抬起此距离 |
+| `max_steps` | int | 300 | 50~1000 | 抬升最大步数。超过此步数未到达目标高度则判定失败 |
+| `hold_steps` | int | 20 | 5~100 | 抬升到位后的保持步数。验证物体不会滑落 |
+| `tolerance` | float | 0.02 | 0.001~0.10 | 抬升到位容差（米）。到达目标高度的误差允许范围 |
+| `max_action` | float | 0.80 | 0.10~2.0 | 抬升动作的最大幅度。值越大手臂动作越激进 |
+
+### `turn` — 转向参数（4 个）
+
+放置前机器人面向目标站的转向对齐。所有参数通过 `skills/place_down.py` → `backend.place_object_physics()` 生效。
+
+| 参数 | 类型 | 默认值 | 范围 | 含义 |
+|------|------|--------|------|------|
+| `tolerance` | float | 0.02 | 0.001~0.10 | 转向到位容差（rad）。朝向误差小于此值即认为对准 |
+| `max_iters` | int | 8 | 1~30 | 转向最大迭代次数。每次迭代执行 `turn_steps` 步 |
+| `turn_steps` | int | 40 | 10~200 | 每次转向迭代的步数 |
+| `settle_steps` | int | 10 | 0~50 | 转向完成后的稳定步数 |
+
+### `place` — 放置参数（4 个）
+
+控制物体下降和释放的精细操作。所有参数通过 `skills/place_down.py` → `backend.place_object_physics()` 生效。
+
+| 参数 | 类型 | 默认值 | 范围 | 含义 |
+|------|------|--------|------|------|
+| `lower_delta` | float | 0.18 | 0.05~0.50 | 下降高度差（米）。从持物高度向下降低此距离 |
+| `lower_steps` | int | 25 | 5~100 | 下降过程步数。越多下降越平滑但越慢 |
+| `release_steps` | int | 60 | 10~300 | 释放后等待步数。让物体受重力自然落到桌面 |
+| `release_clearance` | float | 0.04 | 0.01~0.20 | 释放间隙（米）。物体底部与桌面的安全距离，避免穿模 |
+
+---
+
+## 快速启动
+
+```bash
+# python>=3.11
+cd v5
+pip install -r requirements.txt
+pip install -e ./robosuite
+pip install -e .
+
+# 确保以下文件存在：
+#   robosuite/robosuite/model_epoch_150.pth
+#   robosuite/.../generated_maps/*_regenerated_*.json
+
+streamlit run app.py
+```
+
+可选环境变量：
+
+```bash
+set OLLAMA_BASE_URL=http://your-server:11434
+set OLLAMA_MODEL=qwen3.6:27b
+```
+
+---
+
+## License & Copyright
+
+### 本项目
+
+```
+Copyright (c) 2025–2026 VLA Agent Contributors.
+
+VLA Agent (src/robot_agent/, app.py) 以 MIT License 发布。
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+```
+
+### 第三方依赖及许可
+
+| 组件 | 许可 | 版权方 |
+|------|------|--------|
+| [robosuite](robosuite/) | MIT | Stanford Vision and Learning Lab & UT Robot Perception and Learning Lab |
+| [robomimic](robomimic/) | MIT | ARISE Initiative (Stanford) |
+| [MuJoCo](https://mujoco.org/) | Apache 2.0 | Google DeepMind |
+| | | |

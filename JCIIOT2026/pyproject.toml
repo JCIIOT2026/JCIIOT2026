@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robot-agent-v2"
+version = "0.1.0"
+description = "Basic robot skill agent framework"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+	"numpy>=1.24",
+	"streamlit>=1.36",
+	"pillow>=10.0",
+	"matplotlib>=3.7",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+robot-agent = "robot_agent.main:main"
+

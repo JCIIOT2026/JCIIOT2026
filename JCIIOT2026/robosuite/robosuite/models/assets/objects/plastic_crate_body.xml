@@ -1,0 +1,65 @@
+<mujoco model="plastic_crate">
+  <asset>
+    <mesh name="crate_mesh" file="meshes/plastic_crate.obj" scale="1 1 1"/>
+    <material name="crate_green" rgba="0.02 0.22 0.04 1" specular="0.35" shininess="0.25"/>
+    <material name="crate_collision" rgba="0.02 0.22 0.04 0.25" specular="0.1" shininess="0.1"/>
+  </asset>
+
+  <worldbody>
+    <body>
+      <body name="object">
+        <inertial pos="0 0 0" mass="0.25" diaginertia="0.0020 0.0035 0.0038"/>
+
+        <geom name="visual"
+              type="mesh"
+              mesh="crate_mesh"
+              material="crate_green"
+              pos="0 0 -0.169881"
+              quat="0.70710678 0.70710678 0 0"
+              contype="0"
+              conaffinity="0"
+              group="1"/>
+
+        <geom name="crate_col_bottom" type="box"
+              pos="0 0 -0.18148"
+              size="0.34493 0.22683 0.009"
+              material="crate_collision"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="crate_col_front" type="box"
+              pos="0 -0.21983 0.009"
+              size="0.34493 0.007 0.18148"
+              material="crate_collision"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="crate_col_back" type="box"
+              pos="0 0.21983 0.009"
+              size="0.34493 0.007 0.18148"
+              material="crate_collision"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="crate_col_left" type="box"
+              pos="-0.33793 0 0.009"
+              size="0.007 0.22683 0.18148"
+              material="crate_collision"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+        <geom name="crate_col_right" type="box"
+              pos="0.33793 0 0.009"
+              size="0.007 0.22683 0.18148"
+              material="crate_collision"
+              friction="1.0 0.005 0.0001"
+              group="0"/>
+
+        <site name="handle0" pos="0 -0.235 0.04" size="0.006" rgba="0 1 0 0.8" group="2"/>
+        <site name="handle1" pos="0 0.235 0.04" size="0.006" rgba="0 0 1 0.8" group="2"/>
+        <site name="right_grasp_set" pos="-0.160 0.245 0.150" size="0.012" rgba="1 0.05 0.05 1" group="2"/>
+        <site name="left_grasp_set" pos="0.160 0.245 0.150" size="0.012" rgba="0.05 0.25 1 1" group="2"/>
+        <site name="center" pos="0 0 0" size="0.006" rgba="1 0 0 0.3" group="2"/>
+      </body>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 -0.19048" name="bottom_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0 0 0.19048" name="top_site"/>
+      <site rgba="0 0 0 0" size="0.005" pos="0.36 0.24 0" name="horizontal_radius_site"/>
+    </body>
+  </worldbody>
+</mujoco>

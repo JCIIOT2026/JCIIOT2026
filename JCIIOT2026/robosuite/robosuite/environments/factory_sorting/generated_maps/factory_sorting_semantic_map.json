@@ -1,0 +1,818 @@
+{
+  "scene_name": "factory_sorting",
+  "map_name": "factory_sorting",
+  "coordinate_frame": "mujoco_world_xy",
+  "description": "FactorySorting scene. The numbering follows the uploaded bird-view image: input_1 upper-left, input_2 upper-right, input_3 below input_1, input_4 below input_2, outputs bottom row left to right.",
+  "bounds": {
+    "x_min": -4.8,
+    "x_max": 5.3,
+    "y_min": -4.4,
+    "y_max": 4.4
+  },
+  "image_view": {
+    "image_horizontal_axis": "world_y",
+    "image_vertical_axis": "-world_x"
+  },
+  "robot": {
+    "name": "tiago",
+    "start": [
+      1.35,
+      0.0
+    ],
+    "radius": 0.35,
+    "safety_margin": 0.05
+  },
+  "objects": [
+    {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "conveyor",
+      "center": [
+        -2.0,
+        -3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        -1.25,
+        -3.8
+      ],
+      "image_position": "upper_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "center": [
+        -2.0,
+        3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        -1.25,
+        3.8
+      ],
+      "image_position": "upper_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "shelf",
+      "center": [
+        0.0,
+        -3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        0.75,
+        -3.8
+      ],
+      "image_position": "middle_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "bin",
+      "center": [
+        0.0,
+        3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        0.75,
+        3.8
+      ],
+      "image_position": "middle_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "center": [
+        4.6,
+        -3.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        -3.0
+      ],
+      "image_position": "bottom_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "bin",
+      "center": [
+        4.6,
+        -1.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        -1.0
+      ],
+      "image_position": "bottom_mid_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "conveyor",
+      "center": [
+        4.6,
+        1.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        1.0
+      ],
+      "image_position": "bottom_mid_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "shelf",
+      "center": [
+        4.6,
+        3.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        3.0
+      ],
+      "image_position": "bottom_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "central_conveyor_1",
+      "type": "obstacle",
+      "kind": "central_conveyor",
+      "center": [
+        -3.5,
+        0.0
+      ],
+      "size": [
+        0.64,
+        4.6
+      ],
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.32,
+        2.3
+      ]
+    },
+    {
+      "name": "central_conveyor_2",
+      "type": "obstacle",
+      "kind": "central_conveyor",
+      "center": [
+        -1.5,
+        0.0
+      ],
+      "size": [
+        0.64,
+        4.6
+      ],
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.32,
+        2.3
+      ]
+    },
+    {
+      "name": "central_conveyor_3",
+      "type": "obstacle",
+      "kind": "central_conveyor",
+      "center": [
+        0.5,
+        0.0
+      ],
+      "size": [
+        0.64,
+        4.6
+      ],
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.32,
+        2.3
+      ]
+    }
+  ],
+  "cell_values": {
+    "free": 0,
+    "obstacle": 1,
+    "station": 2,
+    "approach": 3,
+    "robot": 4
+  },
+  "input_ports": {
+    "input_1": {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "conveyor",
+      "center": [
+        -2.0,
+        -3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        -1.25,
+        -3.8
+      ],
+      "image_position": "upper_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    "input_2": {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "center": [
+        -2.0,
+        3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        -1.25,
+        3.8
+      ],
+      "image_position": "upper_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    "input_3": {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "shelf",
+      "center": [
+        0.0,
+        -3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        0.75,
+        -3.8
+      ],
+      "image_position": "middle_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    "input_4": {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "bin",
+      "center": [
+        0.0,
+        3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        0.75,
+        3.8
+      ],
+      "image_position": "middle_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    }
+  },
+  "output_ports": {
+    "output_1": {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "center": [
+        4.6,
+        -3.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        -3.0
+      ],
+      "image_position": "bottom_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    "output_2": {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "bin",
+      "center": [
+        4.6,
+        -1.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        -1.0
+      ],
+      "image_position": "bottom_mid_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    "output_3": {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "conveyor",
+      "center": [
+        4.6,
+        1.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        1.0
+      ],
+      "image_position": "bottom_mid_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    "output_4": {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "shelf",
+      "center": [
+        4.6,
+        3.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        3.0
+      ],
+      "image_position": "bottom_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    }
+  },
+  "obstacles": [
+    {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "conveyor",
+      "center": [
+        -2.0,
+        -3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        -1.25,
+        -3.8
+      ],
+      "image_position": "upper_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "center": [
+        -2.0,
+        3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        -1.25,
+        3.8
+      ],
+      "image_position": "upper_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "shelf",
+      "center": [
+        0.0,
+        -3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        0.75,
+        -3.8
+      ],
+      "image_position": "middle_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "bin",
+      "center": [
+        0.0,
+        3.8
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        0.75,
+        3.8
+      ],
+      "image_position": "middle_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "center": [
+        4.6,
+        -3.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        -3.0
+      ],
+      "image_position": "bottom_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "bin",
+      "center": [
+        4.6,
+        -1.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        -1.0
+      ],
+      "image_position": "bottom_mid_left",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "conveyor",
+      "center": [
+        4.6,
+        1.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        1.0
+      ],
+      "image_position": "bottom_mid_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "shelf",
+      "center": [
+        4.6,
+        3.0
+      ],
+      "size": [
+        0.8,
+        0.8
+      ],
+      "approach": [
+        3.85,
+        3.0
+      ],
+      "image_position": "bottom_right",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.4,
+        0.4
+      ]
+    },
+    {
+      "name": "central_conveyor_1",
+      "type": "obstacle",
+      "kind": "central_conveyor",
+      "center": [
+        -3.5,
+        0.0
+      ],
+      "size": [
+        0.64,
+        4.6
+      ],
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.32,
+        2.3
+      ]
+    },
+    {
+      "name": "central_conveyor_2",
+      "type": "obstacle",
+      "kind": "central_conveyor",
+      "center": [
+        -1.5,
+        0.0
+      ],
+      "size": [
+        0.64,
+        4.6
+      ],
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.32,
+        2.3
+      ]
+    },
+    {
+      "name": "central_conveyor_3",
+      "type": "obstacle",
+      "kind": "central_conveyor",
+      "center": [
+        0.5,
+        0.0
+      ],
+      "size": [
+        0.64,
+        4.6
+      ],
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "half_size": [
+        0.32,
+        2.3
+      ]
+    }
+  ],
+  "resolution": 0.05,
+  "grid_shape": [
+    203,
+    177
+  ],
+  "files": {
+    "semantic_map": "factory_sorting_semantic_map.json",
+    "occupancy_grid": "factory_sorting_occupancy_grid.npy",
+    "visualization": "factory_sorting_map.png"
+  }
+}

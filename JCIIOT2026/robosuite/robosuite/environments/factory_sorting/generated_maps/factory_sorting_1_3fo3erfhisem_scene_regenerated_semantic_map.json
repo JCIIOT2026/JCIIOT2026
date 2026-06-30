@@ -1,0 +1,2427 @@
+{
+  "scene_name": "factory_sorting_1_3fo3erfhisem",
+  "map_name": "factory_sorting_1_3fo3erfhisem_scene_regenerated",
+  "coordinate_frame": "mujoco_world_xy",
+  "description": "FactorySorting 1-3FO3ERFHISEM Siemens scene map regenerated for the six-line top-view layout. There are six production lines; task input objects are placed on the positive-world-y side support tables, and output stations are on the negative-world-y side support tables. Station numbering follows FactorySorting1_3FO3ERFHISEM line object names: line_1 is input_1/output_1 and line_6 is input_6/output_6. The uploaded top-view image is interpreted with world_y as the horizontal image axis and -world_x as the vertical image axis.",
+  "source_files": [
+    "robosuite/environments/factory_sorting/factory_sorting_1_3fo3erfhisem.py",
+    "robosuite/environments/factory_sorting/load_factory_sorting_1_3fo3erfhisem_scene.py",
+    "robosuite/models/assets/objects/siemens/1-3FO3ERFHISEM/scene_robosuite.xml",
+    "robosuite/models/assets/objects/siemens/1-3FO3ERFHISEM/summary.json",
+    "robosuite/models/assets/objects/siemens/1-3FO3ERFHISEM/meshes/parts/*.obj"
+  ],
+  "coordinate_notes": {
+    "input_side": "positive world_y",
+    "output_side": "negative world_y",
+    "station_centers": "input stations use FactorySorting1_3FO3ERFHISEM._default_siemens_line_object_poses; output stations use FactorySorting1_3FO3ERFHISEM._siemens_static_table_support_surfaces",
+    "production_line_sources": "narrow wardrobe belt meshes are used as navigation obstacles; large Other/Actor production-line bounding boxes are retained only as non-obstacle references because their total mesh bounds include output-side free space",
+    "approach_points": "input approaches are on the positive-world-x side of each task object to match the robot-facing grasp-site convention; output approaches are on the negative-world-x side of each output table",
+    "obstacles": "navigation obstacles are generated from transparent AABB boxes in FactorySorting1_3FO3ERFHISEM.SCENE_AABB_COLLISION_BOXES; input/output station entries are kept unchanged"
+  },
+  "bounds": {
+    "x_min": -19.2,
+    "x_max": 20.2,
+    "y_min": -12.2,
+    "y_max": 9.2
+  },
+  "image_view": {
+    "image_horizontal_axis": "world_y",
+    "image_vertical_axis": "-world_x"
+  },
+  "robot": {
+    "name": "tiago",
+    "start": [
+      13.5,
+      0.0
+    ],
+    "radius": 0.35,
+    "safety_margin": 0.2
+  },
+  "objects": [
+    {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -14.544,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -13.1,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -16.198,
+        -7.29
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -17.05,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -9.761,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -8.3,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.414,
+        -7.135
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -12.25,
+        -7.135
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -4.316,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -3.1,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.969,
+        -7.077
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -6.82,
+        -7.077
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        1.487,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        2.85,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        -0.166,
+        -7.29
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -1.02,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_5",
+      "display_name": "No.5 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        7.186,
+        3.938
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "approach": [
+        8.0,
+        4.619
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "output_5",
+      "display_name": "No.5 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        4.872,
+        -7.261
+      ],
+      "size": [
+        0.508,
+        0.918
+      ],
+      "approach": [
+        4.02,
+        -7.261
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.254,
+        0.459
+      ]
+    },
+    {
+      "name": "input_6",
+      "display_name": "No.6 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        11.937,
+        3.932
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "approach": [
+        13.0,
+        3.932
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "output_6",
+      "display_name": "No.6 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.032,
+        -7.267
+      ],
+      "size": [
+        0.508,
+        0.918
+      ],
+      "approach": [
+        9.18,
+        -7.267
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.254,
+        0.459
+      ]
+    },
+    {
+      "name": "production_line_1",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        -15.589,
+        -0.92
+      ],
+      "size": [
+        2.85,
+        12.1
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_1",
+      "production_line": "production_line_1",
+      "yaw": 0.0,
+      "half_size": [
+        1.425,
+        6.05
+      ]
+    },
+    {
+      "name": "production_line_2",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        -10.805,
+        -0.843
+      ],
+      "size": [
+        2.9,
+        12.0
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_2",
+      "production_line": "production_line_2",
+      "yaw": 0.0,
+      "half_size": [
+        1.45,
+        6.0
+      ]
+    },
+    {
+      "name": "production_line_3",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        -5.393,
+        -0.815
+      ],
+      "size": [
+        2.75,
+        11.9
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_3",
+      "production_line": "production_line_3",
+      "yaw": 0.0,
+      "half_size": [
+        1.375,
+        5.95
+      ]
+    },
+    {
+      "name": "production_line_4",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        0.41,
+        -0.941
+      ],
+      "size": [
+        2.45,
+        11.2
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_4",
+      "production_line": "production_line_4",
+      "yaw": 0.0,
+      "half_size": [
+        1.225,
+        5.6
+      ]
+    },
+    {
+      "name": "production_line_5",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        6.071,
+        -0.946
+      ],
+      "size": [
+        2.65,
+        13.3
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_5",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        1.325,
+        6.65
+      ]
+    },
+    {
+      "name": "production_line_6",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        10.451,
+        -0.948
+      ],
+      "size": [
+        2.9,
+        12.2
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_6",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        1.45,
+        6.1
+      ]
+    },
+    {
+      "name": "line_1_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        -15.427,
+        -1.17
+      ],
+      "size": [
+        0.57,
+        13.25
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_1_belt",
+      "production_line": "production_line_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.625
+      ]
+    },
+    {
+      "name": "line_2_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        -10.643,
+        -1.093
+      ],
+      "size": [
+        0.57,
+        13.095
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_2_belt",
+      "production_line": "production_line_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.5475
+      ]
+    },
+    {
+      "name": "line_3_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        -5.148,
+        -1.165
+      ],
+      "size": [
+        0.57,
+        12.24
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_3_belt",
+      "production_line": "production_line_3",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.12
+      ]
+    },
+    {
+      "name": "line_4_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        0.605,
+        -1.291
+      ],
+      "size": [
+        0.57,
+        12.493
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_4_belt",
+      "production_line": "production_line_4",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.2465
+      ]
+    },
+    {
+      "name": "line_5_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        6.152,
+        -0.946
+      ],
+      "size": [
+        0.57,
+        13.603
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_belt",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.8015
+      ]
+    },
+    {
+      "name": "line_6_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        10.911,
+        -1.048
+      ],
+      "size": [
+        0.57,
+        13.872
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_belt",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.936
+      ]
+    },
+    {
+      "name": "line_5_crossbar_1",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -7.073
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_1",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_5_crossbar_2",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -5.09
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_2",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_5_crossbar_3",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -3.173
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_3",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_5_crossbar_4",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -1.288
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_4",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_6_output_side_protrusion",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.901,
+        -7.43
+      ],
+      "size": [
+        1.05,
+        1.65
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_output_side_protrusion",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.525,
+        0.825
+      ]
+    },
+    {
+      "name": "line_6_lower_machine_module",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.75,
+        -3.65
+      ],
+      "size": [
+        1.75,
+        5.15
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_lower_machine_module",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.875,
+        2.575
+      ]
+    },
+    {
+      "name": "line_6_center_machine_module",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.95,
+        0.96
+      ],
+      "size": [
+        1.55,
+        3.3
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_center_machine_module",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.775,
+        1.65
+      ]
+    },
+    {
+      "name": "line_6_input_side_protrusion",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        9.53,
+        3.37
+      ],
+      "size": [
+        1.8,
+        3.5
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_input_side_protrusion",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.9,
+        1.75
+      ]
+    },
+    {
+      "name": "line_6_input_end_module",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.834,
+        5.624
+      ],
+      "size": [
+        0.97,
+        1.528
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_input_end_module",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.485,
+        0.764
+      ]
+    },
+    {
+      "name": "side_table_pos_y_1",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        -5.856,
+        8.473
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_pos_y_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "side_table_neg_y_1",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        -5.855,
+        -11.03
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_neg_y_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "side_table_pos_y_2",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        0.144,
+        8.473
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_pos_y_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "side_table_neg_y_2",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        0.145,
+        -11.03
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_neg_y_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "right_side_device_1",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        -6.216
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    },
+    {
+      "name": "right_side_device_2",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        -2.416
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    },
+    {
+      "name": "right_side_device_3",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        1.384
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_3",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    },
+    {
+      "name": "right_side_device_4",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        5.184
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_4",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    }
+  ],
+  "cell_values": {
+    "free": 0,
+    "obstacle": 1,
+    "station": 2,
+    "approach": 3,
+    "robot": 4
+  },
+  "input_ports": {
+    "input_1": {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -14.544,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -13.1,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    "input_2": {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -9.761,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -8.3,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    "input_3": {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -4.316,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -3.1,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    "input_4": {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        1.487,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        2.85,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    "input_5": {
+      "name": "input_5",
+      "display_name": "No.5 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        7.186,
+        3.938
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "approach": [
+        8.0,
+        4.619
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    "input_6": {
+      "name": "input_6",
+      "display_name": "No.6 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        11.937,
+        3.932
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "approach": [
+        13.0,
+        3.932
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    }
+  },
+  "output_ports": {
+    "output_1": {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -16.198,
+        -7.29
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -17.05,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    "output_2": {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.414,
+        -7.135
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -12.25,
+        -7.135
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    "output_3": {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.969,
+        -7.077
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -6.82,
+        -7.077
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    "output_4": {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        -0.166,
+        -7.29
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -1.02,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    "output_5": {
+      "name": "output_5",
+      "display_name": "No.5 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        4.872,
+        -7.261
+      ],
+      "size": [
+        0.508,
+        0.918
+      ],
+      "approach": [
+        4.02,
+        -7.261
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.254,
+        0.459
+      ]
+    },
+    "output_6": {
+      "name": "output_6",
+      "display_name": "No.6 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.032,
+        -7.267
+      ],
+      "size": [
+        0.508,
+        0.918
+      ],
+      "approach": [
+        9.18,
+        -7.267
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.254,
+        0.459
+      ]
+    }
+  },
+  "obstacles": [
+    {
+      "name": "input_1",
+      "display_name": "No.1 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -14.544,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -13.1,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_1",
+      "display_name": "No.1 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_1",
+      "center": [
+        -16.198,
+        -7.29
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -17.05,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_1_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_2",
+      "display_name": "No.2 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -9.761,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -8.3,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_2",
+      "display_name": "No.2 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_2",
+      "center": [
+        -11.414,
+        -7.135
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -12.25,
+        -7.135
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_2_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_3",
+      "display_name": "No.3 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -4.316,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        -3.1,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_3",
+      "display_name": "No.3 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_3",
+      "center": [
+        -5.969,
+        -7.077
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -6.82,
+        -7.077
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_3_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_4",
+      "display_name": "No.4 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        1.487,
+        5.01
+      ],
+      "size": [
+        0.836,
+        1.684
+      ],
+      "approach": [
+        2.85,
+        5.01
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.418,
+        0.842
+      ]
+    },
+    {
+      "name": "output_4",
+      "display_name": "No.4 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_4",
+      "center": [
+        -0.166,
+        -7.29
+      ],
+      "size": [
+        0.502,
+        1.01
+      ],
+      "approach": [
+        -1.02,
+        -7.29
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_4_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.251,
+        0.505
+      ]
+    },
+    {
+      "name": "input_5",
+      "display_name": "No.5 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        7.186,
+        3.938
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "approach": [
+        8.0,
+        4.619
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "output_5",
+      "display_name": "No.5 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_5",
+      "center": [
+        4.872,
+        -7.261
+      ],
+      "size": [
+        0.508,
+        0.918
+      ],
+      "approach": [
+        4.02,
+        -7.261
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_5_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.254,
+        0.459
+      ]
+    },
+    {
+      "name": "input_6",
+      "display_name": "No.6 input",
+      "type": "station",
+      "role": "input",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        11.937,
+        3.932
+      ],
+      "size": [
+        0.5,
+        0.75
+      ],
+      "approach": [
+        13.0,
+        3.932
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_positive_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.25,
+        0.375
+      ]
+    },
+    {
+      "name": "output_6",
+      "display_name": "No.6 output",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "production_line_6",
+      "center": [
+        10.032,
+        -7.267
+      ],
+      "size": [
+        0.508,
+        0.918
+      ],
+      "approach": [
+        9.18,
+        -7.267
+      ],
+      "approach_radius": 0.18,
+      "image_position": "line_6_negative_y_side",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.254,
+        0.459
+      ]
+    },
+    {
+      "name": "production_line_1",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        -15.589,
+        -0.92
+      ],
+      "size": [
+        2.85,
+        12.1
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_1",
+      "production_line": "production_line_1",
+      "yaw": 0.0,
+      "half_size": [
+        1.425,
+        6.05
+      ]
+    },
+    {
+      "name": "production_line_2",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        -10.805,
+        -0.843
+      ],
+      "size": [
+        2.9,
+        12.0
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_2",
+      "production_line": "production_line_2",
+      "yaw": 0.0,
+      "half_size": [
+        1.45,
+        6.0
+      ]
+    },
+    {
+      "name": "production_line_3",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        -5.393,
+        -0.815
+      ],
+      "size": [
+        2.75,
+        11.9
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_3",
+      "production_line": "production_line_3",
+      "yaw": 0.0,
+      "half_size": [
+        1.375,
+        5.95
+      ]
+    },
+    {
+      "name": "production_line_4",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        0.41,
+        -0.941
+      ],
+      "size": [
+        2.45,
+        11.2
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_4",
+      "production_line": "production_line_4",
+      "yaw": 0.0,
+      "half_size": [
+        1.225,
+        5.6
+      ]
+    },
+    {
+      "name": "production_line_5",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        6.071,
+        -0.946
+      ],
+      "size": [
+        2.65,
+        13.3
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_5",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        1.325,
+        6.65
+      ]
+    },
+    {
+      "name": "production_line_6",
+      "type": "obstacle",
+      "kind": "production_line_equipment",
+      "center": [
+        10.451,
+        -0.948
+      ],
+      "size": [
+        2.9,
+        12.2
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_production_line_6",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        1.45,
+        6.1
+      ]
+    },
+    {
+      "name": "line_1_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        -15.427,
+        -1.17
+      ],
+      "size": [
+        0.57,
+        13.25
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_1_belt",
+      "production_line": "production_line_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.625
+      ]
+    },
+    {
+      "name": "line_2_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        -10.643,
+        -1.093
+      ],
+      "size": [
+        0.57,
+        13.095
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_2_belt",
+      "production_line": "production_line_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.5475
+      ]
+    },
+    {
+      "name": "line_3_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        -5.148,
+        -1.165
+      ],
+      "size": [
+        0.57,
+        12.24
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_3_belt",
+      "production_line": "production_line_3",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.12
+      ]
+    },
+    {
+      "name": "line_4_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        0.605,
+        -1.291
+      ],
+      "size": [
+        0.57,
+        12.493
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_4_belt",
+      "production_line": "production_line_4",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.2465
+      ]
+    },
+    {
+      "name": "line_5_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        6.152,
+        -0.946
+      ],
+      "size": [
+        0.57,
+        13.603
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_belt",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.8015
+      ]
+    },
+    {
+      "name": "line_6_belt",
+      "type": "obstacle",
+      "kind": "production_line_belt",
+      "center": [
+        10.911,
+        -1.048
+      ],
+      "size": [
+        0.57,
+        13.872
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_belt",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.285,
+        6.936
+      ]
+    },
+    {
+      "name": "line_5_crossbar_1",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -7.073
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_1",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_5_crossbar_2",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -5.09
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_2",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_5_crossbar_3",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -3.173
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_3",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_5_crossbar_4",
+      "type": "obstacle",
+      "kind": "production_line_local_protrusion",
+      "center": [
+        6.153,
+        -1.288
+      ],
+      "size": [
+        1.96,
+        0.494
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_5_crossbar_4",
+      "production_line": "production_line_5",
+      "yaw": 0.0,
+      "half_size": [
+        0.98,
+        0.247
+      ]
+    },
+    {
+      "name": "line_6_output_side_protrusion",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.901,
+        -7.43
+      ],
+      "size": [
+        1.05,
+        1.65
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_output_side_protrusion",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.525,
+        0.825
+      ]
+    },
+    {
+      "name": "line_6_lower_machine_module",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.75,
+        -3.65
+      ],
+      "size": [
+        1.75,
+        5.15
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_lower_machine_module",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.875,
+        2.575
+      ]
+    },
+    {
+      "name": "line_6_center_machine_module",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.95,
+        0.96
+      ],
+      "size": [
+        1.55,
+        3.3
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_center_machine_module",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.775,
+        1.65
+      ]
+    },
+    {
+      "name": "line_6_input_side_protrusion",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        9.53,
+        3.37
+      ],
+      "size": [
+        1.8,
+        3.5
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_input_side_protrusion",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.9,
+        1.75
+      ]
+    },
+    {
+      "name": "line_6_input_end_module",
+      "type": "obstacle",
+      "kind": "production_line_local_equipment",
+      "center": [
+        10.834,
+        5.624
+      ],
+      "size": [
+        0.97,
+        1.528
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_line_6_input_end_module",
+      "production_line": "production_line_6",
+      "yaw": 0.0,
+      "half_size": [
+        0.485,
+        0.764
+      ]
+    },
+    {
+      "name": "side_table_pos_y_1",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        -5.856,
+        8.473
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_pos_y_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "side_table_neg_y_1",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        -5.855,
+        -11.03
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_neg_y_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "side_table_pos_y_2",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        0.144,
+        8.473
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_pos_y_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "side_table_neg_y_2",
+      "type": "obstacle",
+      "kind": "side_station",
+      "center": [
+        0.145,
+        -11.03
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_side_table_neg_y_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.8415,
+        0.418
+      ]
+    },
+    {
+      "name": "right_side_device_1",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        -6.216
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_1",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    },
+    {
+      "name": "right_side_device_2",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        -2.416
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_2",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    },
+    {
+      "name": "right_side_device_3",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        1.384
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_3",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    },
+    {
+      "name": "right_side_device_4",
+      "type": "obstacle",
+      "kind": "right_side_device",
+      "center": [
+        18.82,
+        5.184
+      ],
+      "size": [
+        0.575,
+        0.553
+      ],
+      "is_obstacle": true,
+      "visual_value": "obstacle",
+      "collision_source": "transparent_aabb_box",
+      "aabb_proxy_geom": "scene_aabb_proxy_right_side_device_4",
+      "yaw": 0.0,
+      "half_size": [
+        0.2875,
+        0.2765
+      ]
+    }
+  ],
+  "resolution": 0.05,
+  "grid_shape": [
+    789,
+    429
+  ],
+  "files": {
+    "semantic_map": "factory_sorting_1_3fo3erfhisem_scene_regenerated_semantic_map.json",
+    "occupancy_grid": "factory_sorting_1_3fo3erfhisem_scene_regenerated_occupancy_grid.npy",
+    "visualization": "factory_sorting_1_3fo3erfhisem_scene_regenerated_map.png"
+  }
+}

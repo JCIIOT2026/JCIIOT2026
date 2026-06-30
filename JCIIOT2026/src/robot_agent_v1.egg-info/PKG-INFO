@@ -1,0 +1,203 @@
+Metadata-Version: 2.4
+Name: robot-agent-v1
+Version: 0.1.0
+Summary: Basic robot skill agent framework
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.24
+Requires-Dist: streamlit>=1.36
+Requires-Dist: pillow>=10.0
+Requires-Dist: matplotlib>=3.7
+
+# Robot Agent V2 — Factory Sorting 智能体
+
+> 自然语言 → LLM 任务规划 → A\* 路径规划 → MuJoCo 虚拟环境执行 → 视频回放
+
+---
+
+## 目录结构
+
+```
+v2/
+├── app.py                          # Streamlit 前端 (主入口)
+├── README.md                       # 本文件
+├── robosuite/                      # MuJoCo 仿真环境 (robosuite)
+│   └── robosuite/environments/
+│       ├── base.py                 # 环境基类 (MujocoEnv)
+│       ├── robot_env.py            # 机器人环境 (RobotEnv)
+│       └── factory_sorting/
+│           ├── factory_sorting.py  # 工厂分拣场景定义
+│           ├── get_map.py          # 离线建图 (语义地图 + 栅格地图)
+│           ├── llm_task_navigator.py # (旧) LLM导航一体脚本
+│           ├── generated_maps/     # 生成的地图文件 (*.json, *.npy)
+│           └── ...
+└── src/robot_agent/               # 智能体核心代码
+    ├── main.py                     # CLI 入口
+    ├── config.py                   # 配置 (Ollama URL, 超时等)
+    ├── core/
+    │   ├── agent.py                # 智能体编排器 (规划 → 执行)
+    │   ├── planner.py              # 任务规划器 (调用 LLM 分解任务)
+    │   ├── navigation.py           # ★ 纯 A* 路径规划 (零依赖)
+    │   ├── map_loader.py           # ★ 地图加载 + plan_world_path
+    │   ├── scene_context.py        # ★ 工位知识 (名字→坐标→approach点)
+    │   ├── ollama_client.py        # Ollama HTTP 客户端
+    │   ├── schema.py               # JSON 修复/校验
+    │   ├── registry.py             # 技能注册表
+    │   ├── feature_gates.py        # 功能开关
+    │   ├── memory.py               # 执行历史
+    │   ├── output.py               # 输出类型定义
+    │   └── types.py                # 基础类型
+    ├── environments/               # ★ 仿真后端
+    │   ├── base.py                 # EnvBackend 抽象协议 + MockBackend
+    │   └── robosuite_backend.py    # Robosuite 后端 (底盘控制/碰撞/录像)
+    ├── skills/
+    │   ├── base.py                 # 技能基类
+    │   ├── library.py              # 技能工厂 (wired_skills)
+    │   ├── move.py                 # ★ 真实导航 (A* + follow_path)
+    │   ├── pick_up.py              # ★ 真实抓取 (backend.pick_object)
+    │   └── place_down.py           # ★ 真实放置 (backend.place_object)
+    └── workflows/
+        └── task_flow.py            # 任务工作流
+```
+
+★ = 本次新增或重大改动的文件
+
+---
+
+## 本次修改内容
+
+### 1. 架构重构：从 Mock 到真实仿真
+
+**之前**: `skills/move.py`、`pick_up.py`、`place_down.py` 全部是 mock——调用后直接返回 `"已移动到 X"`，不做任何实际操作。
+
+**现在**: 所有技能必须注入 `EnvBackend`，通过 `RobosuiteBackend` 驱动 MuJoCo 仿真中的 Tiago 机器人。
+
+```
+之前:  RobotAgent()                         → mock
+现在:  RobotAgent(backend=..., scene_context=..., grid=...)  → 真实仿真
+```
+
+### 2. 新增模块 (5 个文件)
+
+| 文件 | 职责 |
+|---|---|
+| `core/navigation.py` | A\* 8邻域路径规划、世界坐标↔栅格坐标转换、路径降采样、角度工具。**零依赖（仅 numpy）** |
+| `core/map_loader.py` | 加载语义地图 JSON + 栅格地图 .npy，封装 `plan_world_path()` |
+| `core/scene_context.py` | FactorySorting 工位布局知识：4个进料口 + 4个出料口 + 机器人起点，提供 `approach_xy()` 解析 |
+| `environments/base.py` | `EnvBackend` 抽象协议 + `MockBackend` (测试用) |
+| `environments/robosuite_backend.py` | Robosuite 后端：环境创建、底盘控制 (direct/action 双模式)、碰撞检测、**帧录制** |
+
+### 3. 修改的文件 (6 个文件)
+
+| 文件 | 改动 |
+|---|---|
+| `skills/move.py` | 去掉 mock，注入 backend+scene+grid，真实 A*→follow_path |
+| `skills/pick_up.py` | 去掉 mock，调用 `backend.pick_object()` |
+| `skills/place_down.py` | 去掉 mock，调用 `backend.place_object()` |
+| `skills/library.py` | 删除 `default_skills()`，只保留 `wired_skills()` |
+| `core/agent.py` | backend/scene/grid 改为必填，skills 全部走真实后端 |
+| `core/planner.py` | 支持注入 `SceneContext`，LLM prompt 自动包含工位信息 |
+| `app.py` | 重写：注入后端 + birdview GIF 视频回放 |
+| `workflows/task_flow.py` | 构造参数改为必填 backend/scene/grid |
+
+### 4. 视频录制能力
+
+- `RobosuiteBackend.capture_frame()` — 从 birdview 相机渲染 RGB 帧
+- `follow_path()` 新增 `record_every` 参数，每 N 步自动抓帧
+- Streamlit 前端展示为 GIF 动画（≤60帧，10fps）
+
+---
+
+## 启动方式
+
+### 环境要求
+
+```bash
+pip install numpy streamlit pillow
+# robosuite + mujoco 按项目原有方式安装
+```
+
+需要配置 Ollama 连接（修改 `app.py` 中的 `DEFAULT_OLLAMA_BASE_URL` 和 `DEFAULT_OLLAMA_MODEL`），或设环境变量：
+
+```bash
+export OLLAMA_BASE_URL="http://your-ollama-server:11434"
+export OLLAMA_MODEL="qwen3.6:27b-mtp-q4_K_M"
+```
+
+### 第一步：生成地图
+
+```bash
+cd v2
+python robosuite/robosuite/environments/factory_sorting/get_map.py
+```
+
+生成文件在 `robosuite/robosuite/environments/factory_sorting/generated_maps/`:
+- `factory_sorting_semantic_map.json`
+- `factory_sorting_occupancy_grid.npy`
+- `factory_sorting_map.png` (可视化预览)
+
+### 第二步：启动 Streamlit 前端 (推荐)
+
+```bash
+cd v2
+streamlit run app.py
+```
+
+浏览器打开后：
+1. 左侧输入任务（如 "把1号进料口的物体送到3号出料口"）
+2. 点击"执行任务"
+3. 右侧显示规划步骤 + birdview 导航 GIF 录像
+
+### 第三步 (可选)：命令行模式
+
+```bash
+cd v2
+python -m robot_agent 把1号进料口的物体送到3号出料口
+# 或
+python src/robot_agent/main.py 把1号进料口的物体送到3号出料口
+```
+
+### 地图缺失时
+
+如果未生成地图，Streamlit 侧边栏会显示警告，左侧面板会提示运行 `get_map.py`，不会崩溃。
+
+---
+
+## 配置项
+
+| 环境变量 | 默认值 | 说明 |
+|---|---|---|
+| `OLLAMA_BASE_URL` | GPUFree 云端地址 | Ollama 服务地址 |
+| `OLLAMA_MODEL` | `qwen3.6:27b-mtp-q4_K_M` | 模型名 |
+| `GATE_PLANNER` | `true` | 是否启用 LLM 规划 |
+| `GATE_STEP_RETRY` | `true` | 步骤失败是否重试 |
+| `GATE_STEP_TIMEOUT` | `true` | 是否启用步骤超时 |
+| `GATE_FAIL_FAST` | `true` | 步骤失败是否立即停止 |
+
+---
+
+## 核心调用链
+
+```
+用户输入 "把1号进料口的物体送到3号出料口"
+  │
+  ├─→ TaskPlanner.plan()
+  │     ├─→ SceneContext.as_prompt_context()  →  注入工位信息到 LLM prompt
+  │     └─→ OllamaClient.generate()           →  LLM 返回 JSON plan
+  │
+  └─→ RobotAgent._run_multi_step()
+        │
+        ├─→ MoveSkill.run("input_1_conveyor")
+        │     ├─→ SceneContext.approach_xy()   →  解析为目标坐标
+        │     ├─→ map_loader.plan_world_path() →  A* 规划
+        │     └─→ RobosuiteBackend.follow_path()  →  底盘导航 + 录像
+        │
+        ├─→ PickUpSkill.run("input_1_conveyor")
+        │     └─→ RobosuiteBackend.pick_object()
+        │
+        ├─→ MoveSkill.run("output_3_table")
+        │     └─→ (同上)
+        │
+        └─→ PlaceDownSkill.run("output_3_table")
+              └─→ RobosuiteBackend.place_object()
+```

@@ -1,0 +1,10 @@
+Looking in indexes: https://pypi.mirrors.ustc.edu.cn/simple/
+Requirement already satisfied: mujoco in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (3.2.3)
+Requirement already satisfied: absl-py in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from mujoco) (2.3.1)
+Requirement already satisfied: etils[epath] in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from mujoco) (1.3.0)
+Requirement already satisfied: glfw in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from mujoco) (2.10.0)
+Requirement already satisfied: numpy in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from mujoco) (1.24.4)
+Requirement already satisfied: pyopengl in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from mujoco) (3.1.10)
+Requirement already satisfied: importlib_resources in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from etils[epath]->mujoco) (6.4.5)
+Requirement already satisfied: typing_extensions in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from etils[epath]->mujoco) (4.13.2)
+Requirement already satisfied: zipp in /home/ubuntu/anaconda3/envs/mujoco210/lib/python3.8/site-packages (from etils[epath]->mujoco) (3.20.2)

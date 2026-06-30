@@ -1,0 +1,114 @@
+{
+  "version": "2.0",
+  "tasks": [
+    {
+      "level": "L1",
+      "scene_prefix": "factory_sorting_1_3fo3erfhisem",
+      "env_name": "FactorySorting1_3FO3ERFHISEM",
+      "source": "input_5",
+      "target": "output_4",
+      "object": "line_5_container_h01_near",
+      "max_score": 10
+    },
+    {
+      "level": "L2",
+      "scene_prefix": "factory_sorting_3_3fo3errph7x9",
+      "env_name": "FactorySorting3_3FO3ERRPH7X9",
+      "source": "input_6",
+      "target": "output_4",
+      "object": "green_tote_b01_upper",
+      "max_score": 15
+    },
+    {
+      "level": "L3",
+      "scene_prefix": "factory_sorting_5_3fo3ertpxeut",
+      "env_name": "FactorySorting5_3FO3ERTPXEUT",
+      "source": "input_6",
+      "target": "output_5",
+      "object": "orange_tote_b01_upper",
+      "max_score": 20
+    },
+    {
+      "level": "L4",
+      "scene_prefix": "factory_sorting_7_3fo3erfky9rn",
+      "env_name": "FactorySorting7_3FO3ERFKY9RN",
+      "source": "input_2",
+      "target": "output_5",
+      "object": "blue_container_h01_back_upper",
+      "max_score": 25
+    },
+    {
+      "level": "L5",
+      "scene_prefix": "factory_sorting_9_3fo3ert2c5fp",
+      "env_name": "FactorySorting9_3FO3ERT2C5FP",
+      "source": "input_1",
+      "target": "output_6",
+      "object": "white_tote_b01_left_center",
+      "max_score": 30
+    }
+  ],
+  "grasp_poses": {
+    "input_1": {
+      "pos": [
+        5.03,
+        -3.84,
+        0.0
+      ],
+      "yaw": -3.14
+    },
+    "input_2": {
+      "pos": [
+        8.56,
+        -3.92,
+        0.0
+      ],
+      "yaw": -3.14
+    },
+    "input_3": {
+      "pos": [
+        12.38,
+        -3.76,
+        0.0
+      ],
+      "yaw": -3.14
+    },
+    "input_4": {
+      "pos": [
+        15.8,
+        -3.77,
+        0.0
+      ],
+      "yaw": -3.14
+    },
+    "input_5": {
+      "pos": [
+        8.0,
+        4.6,
+        0.0
+      ],
+      "yaw": -3.139453
+    },
+    "input_6": {
+      "pos": [
+        6.0,
+        4.8,
+        0.0
+      ],
+      "yaw": -3.139453
+    }
+  },
+  "default_object_map": {
+    "input_1": "line_1_container_h01",
+    "input_2": "line_2_container_h10",
+    "input_3": "line_3_tote_b01",
+    "input_4": "line_4_container_h01",
+    "input_5": "line_5_container_h01_near",
+    "input_6": "line_6_tote_b01",
+    "line_1": "line_1_container_h01",
+    "line_2": "line_2_container_h10",
+    "line_3": "line_3_tote_b01",
+    "line_4": "line_4_container_h01",
+    "line_5": "line_5_container_h01_near",
+    "line_6": "line_6_tote_b01"
+  }
+}

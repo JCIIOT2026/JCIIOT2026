@@ -1,0 +1,23 @@
+{
+  "task_type": "pick_and_place",
+  "source": "input_1",
+  "target": "output_3",
+  "steps": [
+    {
+      "action": "navigate",
+      "goal": "input_1"
+    },
+    {
+      "action": "pick",
+      "object_from": "input_1"
+    },
+    {
+      "action": "navigate",
+      "goal": "output_3"
+    },
+    {
+      "action": "place",
+      "object_to": "output_3"
+    }
+  ]
+}
