@@ -26,7 +26,7 @@ def _load_llm_params() -> dict:
         "ollama_model": "qwen3.6:27b-mtp-q4_K_M",
         "vision_model": "qwen3-vl:8b",
         "openai_base_url": "https://api.deepseek.com",
-        "openai_model": "deepseek-chat",
+        "openai_model": "deepseek-v4-flash",
     }
     try:
         if _path.exists():

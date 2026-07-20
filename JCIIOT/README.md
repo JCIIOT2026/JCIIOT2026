@@ -230,7 +230,7 @@ Controls access to the large models used for task planning and visual understand
 | Parameter         | Type   | Default                         | Meaning                                                                |
 | ----------------- | ------ | ------------------------------- | ---------------------------------------------------------------------- |
 | `openai_base_url` | string | `"https://api.deepseek.com"`    | OpenAI-compatible API endpoint.                                        |
-| `openai_model`    | string | `"deepseek-chat"`               | Model name to use for planning.                                        |
+| `openai_model`    | string | `"deepseek-v4-flash"`               | Model name to use for planning.                                        |
 
 Environment variables (`OPENAI_API_KEY`, `OPENAI_BASE_URL`, `OPENAI_MODEL`) override these defaults.
 
@@ -367,7 +367,7 @@ response = ask_vision(prompt, image_bytes,
 from robot_agent.core.vision_client import ask_vision_auto
 response = ask_vision_auto(prompt, image_bytes,
                            base_url="https://api.deepseek.com",
-                           model="deepseek-chat",
+                           model="deepseek-v4-flash",
                            api_key="sk-...")
 ```
 
@@ -383,7 +383,7 @@ set OLLAMA_MODEL=qwen3.6:27b
 # OpenAI-compatible API (DeepSeek, Zhipu GLM, etc.)
 set OPENAI_API_KEY=sk-your-api-key
 set OPENAI_BASE_URL=https://api.deepseek.com
-set OPENAI_MODEL=deepseek-chat
+set OPENAI_MODEL=deepseek-v4-flash
 
 # Zhipu GLM example
 set OPENAI_API_KEY=your-glm-key

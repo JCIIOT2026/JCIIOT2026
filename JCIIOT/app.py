@@ -63,7 +63,7 @@ _llm_defaults = _load_llm_params()
 DEFAULT_OLLAMA_BASE_URL = _llm_defaults["ollama_base_url"]
 DEFAULT_OLLAMA_MODEL = _llm_defaults["ollama_model"]
 DEFAULT_OPENAI_BASE_URL = _llm_defaults.get("openai_base_url", "https://api.deepseek.com")
-DEFAULT_OPENAI_MODEL = _llm_defaults.get("openai_model", "deepseek-chat")
+DEFAULT_OPENAI_MODEL = _llm_defaults.get("openai_model", "deepseek-v4-flash")
 DEFAULT_VISION_MODEL = _llm_defaults["vision_model"]
 AUTO_GENERATE_REPLAY_GIFS = False
 SCORE_RULE_VERSION = "grasp_success_gate_l5_multi_v2"
@@ -791,7 +791,7 @@ def render_sidebar() -> None:
         st.sidebar.text_input(
             "Model", key="_openai_model",
             value=st.session_state.get("_openai_model", DEFAULT_OPENAI_MODEL),
-            placeholder="deepseek-chat",
+            placeholder="deepseek-v4-flash",
         )
 
     elif _selected_key == "local":

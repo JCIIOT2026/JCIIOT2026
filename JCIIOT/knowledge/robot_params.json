@@ -6,7 +6,7 @@
     "ollama_model": "qwen3.6:27b-mtp-q4_K_M",
     "vision_model": "qwen3-vl:8b",
     "openai_base_url": "https://api.deepseek.com",
-    "openai_model": "deepseek-chat"
+    "openai_model": "deepseek-v4-flash"
   },
   "navigation": {
     "_comment": "导航参数 —— 控制底盘移动的速度、精度和模式",

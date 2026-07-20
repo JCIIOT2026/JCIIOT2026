@@ -9,7 +9,7 @@ Usage::
     client = OpenAIClient(
         api_key="sk-...",
         base_url="https://api.deepseek.com",
-        model="deepseek-chat",
+        model="deepseek-v4-flash",
     )
 
     # Zhipu GLM via OpenAI-compatible endpoint
@@ -39,7 +39,7 @@ from dataclasses import dataclass
 logger = logging.getLogger(__name__)
 
 DEFAULT_BASE_URL = "https://api.deepseek.com"
-DEFAULT_MODEL = "deepseek-chat"
+DEFAULT_MODEL = "deepseek-v4-flash"
 DEFAULT_TIMEOUT = 120.0
 
 
