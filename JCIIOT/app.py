@@ -883,7 +883,7 @@ def render_sidebar() -> None:
     _render_vlm_section()
 
 
-    # 鈹€鈹€ Grasp test 鈹€鈹€
+    # ── Grasp test ──
     st.sidebar.divider()
     st.sidebar.subheader("Grasp Test")
     _render_grasp_test()
@@ -1142,7 +1142,7 @@ def render_quick_actions() -> None:
         action, added = st.session_state.pop("_kb_op")
         st.sidebar.success(f"Knowledge base refreshed: +{added} docs")
 
-    # 鈹€鈹€ Trajectory replay 鈹€鈹€
+    # ── Trajectory replay ──
     st.sidebar.divider()
     st.sidebar.subheader("Trajectory Replay")
     _render_replay_section()
@@ -1527,7 +1527,7 @@ def _execute_physics_pipeline(task: str, task_index: int = 0) -> None:
     except Exception:
         pass
 
-    # 鈹€鈹€ Extract key diagnostics from stdout 鈹€鈹€
+    # ── Extract key diagnostics from stdout ──
     _diag_lines: list[str] = []
     for _kw in ("grasp_status", "fingerpad contact", "gripper end distance",
                 "gripper end deltas", "gripper end targets", "gripper end positions",
@@ -1885,7 +1885,7 @@ def _score_steps(task_index: int) -> dict:
     # Weights: leave source (30%), arrive near target (30%), rest on table (40%)
     empty = {"total": 0, "items": []}
 
-    # 鈹€鈹€ Source/target: read dynamically from each scene's map 鈹€鈹€
+    # ── Source/target: read dynamically from each scene's map ──
     _SRC_NAMES = [_task_source_name(i) for i in range(5)]
     _TGT_NAMES = [_task_target_name(i) for i in range(5)]
     try:
@@ -1913,7 +1913,7 @@ def _score_steps(task_index: int) -> dict:
     except Exception:
         return empty
 
-    # 鈹€鈹€ Read object positions from the LAST TRAJECTORY FRAME 鈹€鈹€
+    # ── Read object positions from the LAST TRAJECTORY FRAME ──
     # A fresh env reset sends objects back to spawn; use trajectory JSON instead.
     grasp_success = False
     try:
@@ -1970,12 +1970,12 @@ def _score_steps(task_index: int) -> dict:
     except Exception:
         return empty
 
-    # 鈹€鈹€ Compute distances first 鈹€鈹€
+    # ── Compute distances first ──
     dx_src = abs(px - src_xy[0])
     dy_src = abs(py - src_xy[1])
     dist_tgt = float(np.linalg.norm(np.array([px, py]) - tgt_xy))  # XY only, z checked separately
 
-    # 鈹€鈹€ Debug: dump coordinates 鈹€鈹€
+    # ── Debug: dump coordinates ──
     try:
         debug_lines = [
             f"Object x={px:.3f} y={py:.3f} z={pz:.3f}",
@@ -1987,7 +1987,7 @@ def _score_steps(task_index: int) -> dict:
     except Exception:
         st.session_state["_score_debug"] = []
 
-    # 鈹€鈹€ Score: 2 checkpoints 鈹€鈹€
+    # ── Score: 2 checkpoints ──
     _half = max(1, _max // 2)
     _w_leave = _half
     _w_place = _max - _w_leave
@@ -2004,7 +2004,7 @@ def _score_steps(task_index: int) -> dict:
     ]
     total = sum(it["score"] for it in items if it["ok"])
 
-    # 鈹€鈹€ Collision penalty: -5 if collision detected in trajectory 鈹€鈹€
+    # ── Collision penalty: -5 if collision detected in trajectory ──
     _collision = False
     try:
         import json as _json2
@@ -2159,7 +2159,7 @@ def render_input_panel() -> None:
         return
 
 
-    # 鈹€鈹€ Competition task grid: 5 tasks, 10/15/20/25/30 pts 鈹€鈹€
+    # ── Competition task grid: 5 tasks, 10/15/20/25/30 pts ──
     TASKS = [
         {
             "level": "L1",
@@ -2288,7 +2288,7 @@ def render_input_panel() -> None:
         with c4:
             st.caption(st.session_state["_task_times"].get(i, "-"))
 
-    # 鈹€鈹€ Auto-replay: generate GIF after scores are shown 鈹€鈹€
+    # ── Auto-replay: generate GIF after scores are shown ──
     _pending = st.session_state.pop("_pending_replay", None)
     if AUTO_GENERATE_REPLAY_GIFS and _pending and Path(_pending).exists():
         traj_path = Path(_pending)
@@ -2872,7 +2872,7 @@ def render_result_panel() -> None:
     if subprocess_warning:
         st.warning(subprocess_warning)
 
-    # 鈹€鈹€ Show last physics diag output if available 鈹€鈹€
+    # ── Show last physics diag output if available ──
     _last_diag_files = st.session_state.get("_last_physics_files", {})
     if _last_diag_files.get("diag"):
         import pathlib
