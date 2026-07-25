@@ -7,7 +7,10 @@
       "env_name": "FactorySorting1_3FO3ERFHISEM",
       "source": "input_5",
       "target": "output_4",
-      "object": "line_5_container_h01_near",
+      "object": [
+        "line_5_container_h01_near",
+        "line_5_container_h01_far"
+      ],
       "max_score": 10
     },
     {
@@ -16,7 +19,10 @@
       "env_name": "FactorySorting3_3FO3ERRPH7X9",
       "source": "input_6",
       "target": "output_4",
-      "object": "green_tote_b01_upper",
+      "object": [
+        "green_tote_b01_upper",
+        "green_tote_b01_lower"
+      ],
       "max_score": 15
     },
     {
@@ -25,7 +31,10 @@
       "env_name": "FactorySorting5_3FO3ERTPXEUT",
       "source": "input_6",
       "target": "output_5",
-      "object": "orange_tote_b01_upper",
+      "object": [
+        "orange_tote_b01_upper",
+        "orange_tote_b01_lower"
+      ],
       "max_score": 20
     },
     {
@@ -34,7 +43,10 @@
       "env_name": "FactorySorting7_3FO3ERFKY9RN",
       "source": "input_2",
       "target": "output_5",
-      "object": "blue_container_h01_back_upper",
+      "object": [
+        "blue_container_h01_back_upper",
+        "blue_container_h01_back_lower"
+      ],
       "max_score": 25
     },
     {
@@ -43,7 +55,11 @@
       "env_name": "FactorySorting9_3FO3ERT2C5FP",
       "source": "input_1",
       "target": "output_6",
-      "object": "white_tote_b01_left_center",
+      "object": [
+        "white_tote_b01_left_center",
+        "white_tote_b01_left_front",
+        "white_tote_b01_left_back"
+      ],
       "max_score": 30
     }
   ],

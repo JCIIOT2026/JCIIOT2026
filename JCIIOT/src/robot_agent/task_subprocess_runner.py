@@ -27,8 +27,20 @@ _TASK_LIST = _TASK_CFG.get("tasks", [])
 SCENE_MAP: dict[int, tuple[str, str]] = {
     i: (t["scene_prefix"], t["env_name"]) for i, t in enumerate(_TASK_LIST)
 }
+
+
+def _primary_object_name(value) -> str:
+    if isinstance(value, str):
+        return value
+    if isinstance(value, (list, tuple)):
+        for item in value:
+            if item:
+                return str(item)
+    return ""
+
+
 SCENE_INPUT_OBJECT_MAP: dict[str, dict[str, str]] = {
-    t["env_name"]: {t["source"]: t["object"]} for t in _TASK_LIST
+    t["env_name"]: {t["source"]: _primary_object_name(t.get("object", ""))} for t in _TASK_LIST
 }
 
 

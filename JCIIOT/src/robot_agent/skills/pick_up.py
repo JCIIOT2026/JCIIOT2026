@@ -32,6 +32,18 @@ _CN_KIND: list[str] = ["传送带", "架子", "桌子", "箱子", "料箱", "料
                         "conveyor", "shelf", "table", "bin"]
 
 
+def _primary_object_name(value) -> str | None:
+    if isinstance(value, str):
+        value = value.strip()
+        return value or None
+    if isinstance(value, (list, tuple)):
+        for item in value:
+            name = _primary_object_name(item)
+            if name:
+                return name
+    return None
+
+
 def _resolve_station_name(target: str, scene: SceneContext) -> str:
     """Resolve a natural-language target to a known station name.
 
@@ -123,7 +135,7 @@ class PickUpSkill(BaseSkill):
             or inputs.get("object")
             or inputs.get("target_object")
         )
-        object_name = str(object_name).strip() if object_name else None
+        object_name = _primary_object_name(object_name)
         initial_base_pose = inputs.get("grasp_initial_base_pose")
         if initial_base_pose is None:
             initial_base_pose = inputs.get("initial_base_pose")
