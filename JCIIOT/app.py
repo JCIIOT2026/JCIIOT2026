@@ -105,8 +105,27 @@ def _task_source_name(task_index: int) -> str:
 def _task_target_name(task_index: int) -> str:
     return _task_for_index(task_index).get("target", "output_4")
 
+def _coerce_object_names(value) -> list[str]:
+    if isinstance(value, str):
+        return [value] if value else []
+    if isinstance(value, (list, tuple)):
+        return [str(item) for item in value if item]
+    return []
+
+def _task_object_names(task_index: int) -> list[str]:
+    return _coerce_object_names(_task_for_index(task_index).get("object", ""))
+
 def _task_object_name(task_index: int) -> str:
-    return _task_for_index(task_index).get("object", "")
+    names = _task_object_names(task_index)
+    return names[0] if names else ""
+
+def _object_name_matches(name: str, candidates: list[str]) -> bool:
+    if not candidates:
+        return True
+    name = str(name or "")
+    if not name:
+        return True
+    return any(candidate == name or candidate in name or name in candidate for candidate in candidates)
 
 def _task_grasp_pose(source: str) -> tuple | None:
     poses = _TASK_CFG.get("grasp_poses", {})
@@ -1907,7 +1926,7 @@ def _score_steps(task_index: int) -> dict:
                 _tgt_z = float(_tgt.center[2])
         except Exception:
             pass
-        obj_hint = _task_object_name(task_index)
+        obj_hints = _task_object_names(task_index)
         if task_index == 4:
             return _score_l5_multi_object(task_index, src_xy, tgt_xy, _tgt_z)
     except Exception:
@@ -1916,6 +1935,8 @@ def _score_steps(task_index: int) -> dict:
     # ── Read object positions from the LAST TRAJECTORY FRAME ──
     # A fresh env reset sends objects back to spawn; use trajectory JSON instead.
     grasp_success = False
+    grasped_object_name = None
+    best_obj = None
     try:
         import json as _json
         _last_traj = st.session_state.get("_last_trajectory")
@@ -1930,33 +1951,35 @@ def _score_steps(task_index: int) -> dict:
                     _event_source = str(_event.get("source") or "")
                     _event_object = str(_event.get("object_name") or "")
                     _source_ok = not _event_source or _event_source == _SRC_NAMES[task_index]
-                    _object_ok = (
-                        not obj_hint
-                        or not _event_object
-                        or obj_hint in _event_object
-                        or _event_object in obj_hint
-                    )
+                    _object_ok = _object_name_matches(_event_object, obj_hints)
                     _success_value = _event.get("success")
                     _success_ok = _event_success_value(_success_value)
                     if _source_ok and _object_ok and _success_ok:
                         grasp_success = True
+                        grasped_object_name = _event_object or None
                         break
             _frames = _traj.get("frames", [])
             if _frames:
                 # Last frame has the final object positions
                 _last_frame = _frames[-1]
                 _obj_positions = _last_frame.get("object_positions", {})
-                # Find the right object
                 px = py = pz = None
-                for obj_name, pos in _obj_positions.items():
-                    if obj_hint and obj_hint in obj_name:
+                score_candidates = []
+                if grasped_object_name:
+                    score_candidates.append(grasped_object_name)
+                score_candidates.extend(obj_hints)
+                for candidate in score_candidates:
+                    pos = _trajectory_object_position(_obj_positions, candidate)
+                    if pos is not None:
                         px, py, pz = float(pos[0]), float(pos[1]), float(pos[2])
-                        best_obj = obj_name
+                        best_obj = candidate
                         break
                 if px is None and _obj_positions:
-                    # Pick the one nearest to target
+                    # Pick the scored candidate nearest to target.
                     best_dist = float("inf")
                     for obj_name, pos in _obj_positions.items():
+                        if obj_hints and not _object_name_matches(obj_name, obj_hints):
+                            continue
                         d = float(np.linalg.norm(np.array(pos[:2]) - tgt_xy))
                         if d < best_dist:
                             best_dist, best_obj = d, obj_name
