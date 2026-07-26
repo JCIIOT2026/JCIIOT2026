@@ -32,8 +32,8 @@
       "source": "input_6",
       "target": "output_5",
       "object": [
-        "orange_tote_b01_upper",
-        "orange_tote_b01_lower"
+         "blue_tote_b01_far_right",
+         "blue_tote_b01_near_right"
       ],
       "max_score": 20
     },
