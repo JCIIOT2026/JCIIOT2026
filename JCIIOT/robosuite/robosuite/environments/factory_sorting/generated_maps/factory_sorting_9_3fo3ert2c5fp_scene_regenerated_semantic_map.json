@@ -1653,6 +1653,35 @@
         0.254,
         0.459
       ]
+    },
+    "aux_output_1": {
+      "name": "aux_output_1",
+      "display_name": "Auxiliary output table",
+      "type": "station",
+      "role": "output",
+      "kind": "table",
+      "production_line": "auxiliary_output_table",
+      "center": [
+        0.144,
+        8.473
+      ],
+      "size": [
+        1.683,
+        0.836
+      ],
+      "approach": [
+        0.11,
+        7.55
+      ],
+      "approach_radius": 0.18,
+      "image_position": "side_table_pos_y_2",
+      "yaw": 0.0,
+      "is_obstacle": true,
+      "visual_value": "station",
+      "half_size": [
+        0.8415,
+        0.418
+      ]
     }
   },
   "obstacles": [

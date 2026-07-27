@@ -29,7 +29,7 @@
       "level": "L3",
       "scene_prefix": "factory_sorting_5_3fo3ertpxeut",
       "env_name": "FactorySorting5_3FO3ERTPXEUT",
-      "source": "input_6",
+      "source": "aux_input_1",
       "target": "output_5",
       "object": [
          "blue_tote_b01_far_right",
@@ -54,7 +54,7 @@
       "scene_prefix": "factory_sorting_9_3fo3ert2c5fp",
       "env_name": "FactorySorting9_3FO3ERT2C5FP",
       "source": "input_1",
-      "target": "output_6",
+      "target": "aux_output_1",
       "object": [
         "white_tote_b01_left_center",
         "white_tote_b01_left_front",
