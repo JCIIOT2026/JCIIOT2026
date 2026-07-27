@@ -346,6 +346,8 @@ class RobosuiteBackend:
         self._wrapped_env = None
         self._nav_env = None
         has_physics = getattr(self, "_has_physics", False)
+        if has_physics:
+            self._ensure_physics_policy()
         # Nav env: viewer on for physics, offscreen always available
         show_win = has_physics
         self._env = _make_env(
@@ -357,7 +359,6 @@ class RobosuiteBackend:
         )
         self._env.reset()
         if has_physics:
-            self._ensure_physics_policy()
             try:
                 _set_viewer_camera(self._env, "birdview", render_once=True)
             except Exception:
