@@ -18,9 +18,11 @@ An erratum for the  SOP materials is available in [ERRATUM.md](./ERRATUM.md). Pl
 
 > **Disclaimer:** All scores listed below are self-reported by participants, include only subjective evaluation scores, and do not include objective evaluation scores. They are shown for reference only and have not been officially verified or reproduced.
 
-| Rank | Participant / Team | Score   | Date | Method Summary | Code / Repository | Evidence |
-|------|--------------------|---------|------|----------------|-------------------|----------|
-| 1    | SOP-MapGuard           | 100/100 | 2026-07-21 | N/A  | N/A | N/A      |
+| Rank | Participant / Team  | Score   | Date       | Method Summary | Code / Repository | Evidence |
+|------|---------------------|---------|------------|----------------|-------------------|----------|
+| 1    | wpironman           | 100/100 | 2026-07-27 | N/A  | N/A | N/A      |
+| 2    | BIPT-EDU            | 65/100  | 2026-07-29 | N/A  | N/A | N/A      |
+| 3    | SOP-MapGuard        | 19/100  | 2026-07-28 | N/A  | N/A | N/A      |
 
 ---
 
