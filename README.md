@@ -19,12 +19,13 @@ An erratum for the  SOP materials is available in [ERRATUM.md](./ERRATUM.md). Pl
 > **Disclaimer:** All scores listed below are self-reported by participants, include only subjective evaluation scores, and do not include objective evaluation scores. They are shown for reference only and have not been officially verified or reproduced.
 
 | Rank | Participant / Team | Score   | Date       | Method Summary | Code / Repository | Evidence |
-|------|--------------------|---------|------------|----------------|-------------------|----------|
-| 1    | wpironman          | 100/100 | 2026-08-06 | N/A  | N/A | N/A      |
-| 1    | SOP-MapGuard       | 100/100 | 2026-08-04 | N/A  | N/A | N/A      |
-| 1    | BIPT-EDU           | 100/100 | 2026-08-03 | N/A  | N/A | N/A      |
-| 1    | 一头二臂               | 100/100 | 2026-08-03 | N/A  | N/A | N/A      |
-| 2    | 周春光                | 80/100  | 2026-08-07 | N/A  | N/A | N/A      |
+|------|--------------------|---------|------------|----------------|----------------|-------|
+| 1    | wpironman          | 100/100 | 2026-08-06 | N/A            | N/A | N/A   |
+| 1    | SOP-MapGuard       | 100/100 | 2026-08-04 | N/A            | N/A | N/A   |
+| 1    | BIPT-EDU           | 100/100 | 2026-08-03 | N/A            | N/A | N/A   |
+| 1    | 一头二臂               | 100/100 | 2026-08-03 | N/A            | N/A | N/A   |
+| 1    | VisionAnchor               | 100/100 | 2026-08-10 | #12             | #12 | #12      |
+| 2    | 周春光                | 80/100  | 2026-08-07 | N/A            | N/A | N/A   |
 
 
 ---
