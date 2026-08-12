@@ -25,7 +25,7 @@ An erratum for the  SOP materials is available in [ERRATUM.md](./ERRATUM.md). Pl
 | 1    | BIPT-EDU           | 100/100 | 2026-08-03 | N/A            | N/A | N/A   |
 | 1    | 一头二臂               | 100/100 | 2026-08-03 | N/A            | N/A | N/A   |
 | 1    | VisionAnchor               | 100/100 | 2026-08-10 | #12             | #12 | #12      |
-| 2    | 周春光                | 80/100  | 2026-08-07 | N/A            | N/A | N/A   |
+| 1    | 周春光                | 100/100 | 2026-08-11 | N/A            | N/A | N/A   |
 
 
 ---
